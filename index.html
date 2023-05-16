@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- usando normalize css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@100;300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="shortcut icon" href="assets/imagens/fav/favicon-16x16.png" type="image/x-icon">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
+        integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Tobacco | Tabacaria</title>
+    <script>
+        $(document).ready(function () {
+            $(window).bind('scroll', function () {
+                let gap = 50
+
+                if ($(window).scrollTop() > gap) {
+                    $('header').addClass('active')
+                } else {
+                    $('header').removeClass('active')
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="toggle-btn" onclick="dropdownFunc();">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <img src="assets/imagens/TobaccoRebrand.png">
+            </div>
+            <nav class="nav" id="nav">
+                <ul class="nav-links">
+                    <li><a href="">HOME</a></li>
+                    <li><a href="produtos.html">PRODUTOS</a></li>
+                    <li><a href="#contato">CONTATO</a></li>
+                    <li><a href="#sobre">SOBRE</a></li>
+                </ul>
+                <ul class="icons-nav">
+                    <li><ion-icon name="person-outline" size="large"></ion-icon></li>
+                    <li><ion-icon name="cart-outline" size="large"></ion-icon></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <section id="content1" class="content1">
+        <div class="smok">
+            <img src="assets/imagens/cohiba.png" width="100%" height="720px">
+
+            <!-- <div class="text-smok"><h2>VENHA NOS VISITAR OU ENTRE EM CONTATO:</h2><br> -->
+            <!-- <center><h3><a href="#contato" class="link-contato">CONTATO</a></h3></center> -->
+        </div>
+    </section>
+    <div class="div-marqee">
+        <marquee behavior="" direction="">
+            <div class="marqe">
+                <img src="assets/imagens/TobaccoRebrand.png" height="72px">
+                <p>COHIBA quse de graça</p>
+                <img src="assets/imagens/TobaccoRebrand.png" height="72px">
+                <p>FRETE GRÁTIS ACIMA DE 20 mango</p>
+                <img src="assets/imagens/TobaccoRebrand.png" height="72px">
+                <p>cola ai</p>
+            </div>
+        </marquee>
+
+    </div>
+    <main class="products">
+        <card-product image="" title="test" price="R$300"></card-product>
+        <card-product></card-product>
+        <card-product></card-product>
+        <card-product></card-product>
+
+    </main>
+    <main class="products">
+        <div class="card">
+            <div class="image" id="image2">
+                <img src="/assets/imagens/default2.png">
+            </div>
+            <div class="info">
+                <h3>cohiba</h3>
+                <div class="sub-info">
+                    <div class="price">$2000</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="image" id="image2">
+                <img src="/assets/imagens/default2.png">
+            </div>
+            <div class="info">
+                <h3>cohiba muito muito foda</h3>
+                <div class="sub-info">
+                    <div class="price">$2000</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <main class="products">
+        <card-product></card-product>
+        <card-product></card-product>
+        <card-product></card-product>
+        <card-product></card-product>
+    </main>
+    <div class="div-marqee">
+        <marquee behavior="" direction="">
+            <div class="marqe">
+                <img src="assets/imagens/TobaccoRebrand.png" height="72px">
+                <p>COHIBA quse de graça</p>
+                <img src="assets/imagens/TobaccoRebrand.png" height="72px">
+                <p>FRETE GRÁTIS ACIMA DE 20 mango</p>
+                <img src="assets/imagens/TobaccoRebrand.png" height="72px">
+                <p>cola ai</p>
+            </div>
+        </marquee>
+
+    </div>
+    <!-- Arrumar alinhamento e responsividade -->
+    <!-- sobre -->
+    <main class="descricao-tobbaco" id="sobre">
+        <div class="texto">
+            <div>
+                <p>
+                    Uma tabacaria de bairro é muito mais do que um simples estabelecimento comercial.
+                    Ela é um <strong>ponto de encontro,</strong> um lugar onde amigos e vizinhos se reúnem para
+                    conversar, relaxar e
+                    desfrutar de seus cigarros, charutos e cachimbos favoritos.
+                </p>
+                <br>
+                <p>
+                    O ambiente acolhedor e descontraído de uma tabacaria de bairro cria uma atmosfera única,
+                    onde os clientes podem desfrutar de uma <strong>ampla variedade</strong> de produtos de tabaco, além
+                    de bebidas e
+                    petiscos. Muitas vezes, as tabacarias de bairro também oferecem jogos de cartas e outros passatempos
+                    para os clientes se divertirem enquanto fumam.
+                </p><br>
+            </div>
+            <div>
+
+                <p>
+                    Ao entrar em uma tabacaria de bairro, os clientes são recebidos com o <strong>aroma suave e sedutor
+                        do tabaco.</strong>
+                    O ambiente é geralmente decorado com um toque vintage, criando uma sensação de conforto e nostalgia.
+                    É comum ver fotos antigas e outros objetos nostálgicos em exposição nas paredes, proporcionando um
+                    clima aconchegante e agradável.
+                </p><br>
+                <p>
+                    O atendimento em uma tabacaria de bairro é geralmente personalizado e atencioso,
+                    com os funcionários conhecendo a maioria dos clientes pelo nome e oferecendo sugestões e
+                    recomendações <strong>personalizadas</strong> para atender às necessidades individuais de cada um.
+                    Isso faz com que os clientes se sintam valorizados e apreciados, criando uma conexão mais forte
+                    entre a tabacaria e sua comunidade local.
+                </p><br>
+            </div>
+        </div>
+        <div class="logo-main">
+            <img src="/assets/imagens/TobaccoRebrand.png">
+        </div>
+    </main>
+    <!-- imagem 2 -->
+    <section id="content1" class="content1">
+        <div class="smok">
+            <img src="assets/imagens/lifesgood.png" width="100%" height="100%">
+
+            <!-- <div class="text-smok"><h2>VENHA NOS VISITAR OU ENTRE EM CONTATO:</h2><br> -->
+            <!-- <center><h3><a href="#contato" class="link-contato">CONTATO</a></h3></center> -->
+        </div>
+    </section>
+
+    <!-- contato -->
+    <main class="form-container" id="contato">
+        <div class="img-contato">
+            <img src="/assets/imagens/retrato2000.png" width="50%" height="720px">
+        </div>
+        <div class="form-contato">
+            <form action="" class="form-contato">
+
+                <label for="nome" class="fonte-campo">Nome</label><br>
+                <input type="text" id="nome" name="nome" size="50"><br><br>
+
+
+                <label for="email" class="fonte-campo">Email</label><br>
+                <input type="text" id="email" name="email" size="50"><br><br>
+
+                <label for="assunto" class="fonte-campo">Assunto</label><br>
+                <textarea id="assunto" name="assunto" placeholder="Deixe sua sugestão, dúvida, e etc..."
+                    style="height:200px; width:425px"></textarea><br><br>
+
+                <div class="buttons">
+                    <input type="submit" value="Enviar" class="btn-enviar" onclick="obras()"> <br><br>
+                    <input type="submit" value="Limpar" class="btn-limpar" onclick=""> <br><br>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <img src="/assets/imagens/TOBACCO.png" alt="">
+        </div>
+    </footer>
+
+    <script src="assets/src/components/CardProduct.js"></script>
+    <script src="assets/src/dropdownFunc.js"></script>
+    <!-- Materialize -->
+    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script> -->
+
+    <!-- ionic -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

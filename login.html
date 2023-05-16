@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    
+    <title>Tobacco | Login</title>
+</head>
+<body>
+    <form action="login.php" class="form" method="post">
+    <a href="index.html"><img src="imagens/tobacoII.png" class="logo-form"></a>
+        <center><div class="title">Login</div></center>
+        <div class="input-div div1">
+
+          <input  name="txt_email" id="email" class="input" type="text" placeholder=" " name="email_txt"  required/>
+          <div class="efeito"></div>
+          <label for="email" class="placeholder">Email ou CPF</label>
+        </div>
+
+
+        <div class="input-div div2">
+        <input name="num_senha" id="senha" class="input" type="password" placeholder=" " required/>
+        <div class="efeito"></div>
+          <label for="senha" class="placeholder">Senha</label>
+        </div>
+        
+        <!-- onclick vazio por enquanto, pode inserir de acordo com o arquivo que vc criar -->
+        <button type="submit" class="btn-entrar" name="btn-login" value="ENTRAR">ENTRAR</button>
+        <button type="button" class="btn-limpar" name="btn-limpar" value="LIMPAR" onClick="limpar()">LIMPAR</button>
+        <a href="cadastro.html"><center><hr><h4>Cadastre-se</h4></center></a>
+      </form> 
+</body>
+
+</html
