@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="assets/css/cadastro.css">
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <script src="scriptLogin.js"></script>
+    <script src="assets/src/cpfFunc.js"></script>
+    <script src="assets/src/phoneFunc.js"></script>
 
     <script>
 
@@ -27,42 +29,42 @@
 
         <!-- CAMPO NOME -->
         <div class="input-div div2">
-          <input  name="txt_nome" id="nome" class="input" type="text" placeholder=" " />
+          <input  name="txt_nome" id="nome" class="input" type="text" placeholder=" " required/>
           <div class="efeito"></div>
           <label for="nome" class="placeholder">Nome</label>
         </div>
 
         <!-- CAMPO SOBRENOME -->
         <div class="input-div div2">
-          <input name="txt_sobrenome" id="sobrenome" class="input" type="text" placeholder=" " />
+          <input name="txt_sobrenome" id="sobrenome" class="input" type="text" placeholder=" " required/>
           <div class="efeito"></div>
           <label for="sobrenome" class="placeholder">Sobrenome</label>
         </div>
 
         <!-- CAMPO CPF -->
         <div class="input-div div2">
-          <input name="num_cpf" id="cpf" class="input" type="number" placeholder=" " />
+          <input name="num_cpf" id="num_cpf" class="input" type="text" onkeyup="getCPF(event)" maxlength="14" placeholder=" " required/>
           <div class="efeito"></div>
           <label for="cpf" class="placeholder">CPF</label>
         </div>
 
         <!-- CAMPO SENHA -->
         <div class="input-div div2">
-          <input name="num_senha" id="senha" class="input" type="password" placeholder=" " />
+          <input name="num_senha" id="senha" class="input" type="password" placeholder=" " required/>
           <div class="efeito"></div>
           <label for="senha" class="placeholder">Senha</label>
         </div>
 
         <!-- CAMPO NASCIMENTO -->
         <div class="input-div div2">
-          <input id="nasc" name="txt_nasc" class="input" type="date" placeholder=" " />
+          <input id="nasc" name="txt_nasc" class="input" type="date" placeholder=" " required/>
           <div class="efeito"></div>
           <label for="nasc" class="placeholder">Nascimento</label>
         </div>
 
         <!-- CAMPO TELEFONE -->
         <div class="input-div div2">
-          <input id="tel" class="input" name="num_tel" type="tel" inputmode="numeric" maxlength="11" placeholder=" " />
+          <input id="tel" class="input" name="num_tel" type="text" inputmode="numeric" maxlength="15" onkeyup="handlePhone(event)" placeholder=" " required/>
           <!--<input id="tel" class="input" name="num_tel" type="number" pattern="[0-9\s]{13,19}" maxlength="11" placeholder=" " />-->
           <div class="efeito"></div>
           <label for="tel" class="placeholder">Telefone</label>
