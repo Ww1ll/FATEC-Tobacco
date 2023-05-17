@@ -50,7 +50,7 @@ class CardProduct extends  HTMLElement{
         prodInfo.appendChild(prodTitle);
         prodInfo.appendChild(subInfo);
 
-        imageContainer.appendChild(hoverImage); // tofazendo manualmente
+        // imageContainer.appendChild(hoverImage); 
         imageContainer.appendChild(productImage);
         
 
