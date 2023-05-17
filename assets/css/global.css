@@ -268,7 +268,7 @@ p {color: #333; font-weight: lighter; margin-left: 5%; margin-right: 5%;}
     color: #fff;} */
 /*footer*/
 
-
+/*Incorporar isso na página de produtos*/
 @media screen and (min-width: 380px) {
     .pokemons {
         grid-template-columns: 1fr 1fr;
