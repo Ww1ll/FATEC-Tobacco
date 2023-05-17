@@ -5,13 +5,13 @@
 * criar a página de produtos 
 
 ## CSS
-* arrumar bug dos icons grudados na nav
+
 
 
 ## front/ index
 * alinhar texto com imagem x
 * fazer form de contato x
-* pagina de prod
+* pagina de prod //falta arrumar afastamento menu
 * arrumar responsividade
 * colocar components x (falta nav)
 * preencher footer

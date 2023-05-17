@@ -20,6 +20,18 @@ class CardProduct extends  HTMLElement{
         productImage.src = this.getAttribute("image") || "/assets/imagens/default2.png"; //inserir photo nas pastas
         productImage.alt = "Foto do produto";
 
+        const hoverImage = document.createElement("img"); // tofazendo manualmente
+        hoverImage.src = this.getAttribute('photo') || '/assets/imagens/default.png';
+
+
+        productImage.addEventListener('mouseover', ()=>{
+            productImage.src = this.getAttribute('photo') || '/assets/imagens/default.png'; // tofazendo manualmente
+        });
+
+        productImage.addEventListener('mouseout', () =>{
+            productImage.src = this.getAttribute('image') || '/assets/imagens/default2.png';
+        });
+
         const prodInfo = document.createElement("div");
         prodInfo.setAttribute("class", "info");
 
@@ -38,6 +50,7 @@ class CardProduct extends  HTMLElement{
         prodInfo.appendChild(prodTitle);
         prodInfo.appendChild(subInfo);
 
+        imageContainer.appendChild(hoverImage); // tofazendo manualmente
         imageContainer.appendChild(productImage);
         
 
@@ -68,7 +81,7 @@ class CardProduct extends  HTMLElement{
         } 
         
         .image img:hover{
-            content: url("/assets/imagens/default.png");
+            // content: url("/assets/imagens/default.png");
             cursor: pointer;
         }
         
