@@ -1,4 +1,4 @@
-class CardProduct extends  HTMLElement{
+class CardProduct extends HTMLElement{
     constructor(){
         super();
 
@@ -20,12 +20,13 @@ class CardProduct extends  HTMLElement{
         productImage.src = this.getAttribute("image") || "/assets/imagens/default2.png"; //inserir photo nas pastas
         productImage.alt = "Foto do produto";
 
-        const hoverImage = document.createElement("img"); // tofazendo manualmente
+        const hoverImage = document.createElement("img"); 
         hoverImage.src = this.getAttribute('photo') || '/assets/imagens/default.png';
 
 
+        // Funcao hover
         productImage.addEventListener('mouseover', ()=>{
-            productImage.src = this.getAttribute('photo') || '/assets/imagens/default.png'; // tofazendo manualmente
+            productImage.src = this.getAttribute('photo') || '/assets/imagens/default.png'; 
         });
 
         productImage.addEventListener('mouseout', () =>{
