@@ -4,6 +4,28 @@
 .color4 {color: #03d0f6;}
 .color5 {color: #0ffff8;}
 
+table{
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+tr{
+    background-color: #E0EEEE;    
+    width: 1000px;
+}
+
+td{
+    padding: 2px;
+}
+
+tr:hover{
+    background-color: #b3b4b4;
+}
+
+.divCabecalho{
+    background-color: #0e4d62;
+}
 
 #divBusca {
     background-color: #E0EEEE;

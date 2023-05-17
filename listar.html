@@ -1,16 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">    
-    <link rel="stylesheet" href="assets/css/listagens.css">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="assets/css/listagens.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        function alerta(id) {
+            alert(id);
+        }
+        
+        function apagar(id){            
+            $.ajax({
+                url: "apagar.php",
+                type: "POST",
+                data: {
+                    id: `${id}`
+                },
+                success: function(resposta){
+                    alerta(resposta);
+                }
+            });
+        }
+
+
+        function buscaDados() {
+            $.ajax({
+                url: "getDados.php",
+                type: "GET",
+                success: function (resposta) {
+                    const usuario = JSON.parse(resposta);
+                    var tamanho = usuario.length;                    
+
+                    for (let index = 0; index < tamanho; index++) {
+                        $("#tabela").append(`
+                        <tr>
+                        <td>${usuario[index].id}</td>
+                        <td>${usuario[index].nome}</td>
+                        <td>${usuario[index].sobrenome}</td>
+                        <td>${usuario[index].cpf}</td>
+                        <td>${usuario[index].senha}</td>
+                        <td>${usuario[index].nascto}</td>
+                        <td>${usuario[index].telefone}</td>
+                        <td>${usuario[index].email}</td>
+                        <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" onclick="apagar(this.value)" >APAGAR</button></td>
+                         </tr>
+                        `);                                                
+                    }
+                    $("divCabecalho").append(`
+                    </table>`);
+                }
+            })
+        }
+    </script>
     <title>Usuários</title>
 </head>
-<body>
+
+<body onload="buscaDados()">
     <div class="header">
         <div id="divBusca">
-            <img src="assets/imagens/lupa_pesquisa.svg" alt="Buscar..."/>
-            <input type="text" id="txtBusca" placeholder="Buscar..."/>
+            <img src="assets/imagens/lupa_pesquisa.svg" alt="Buscar..." />
+            <input type="text" id="txtBusca" placeholder="Buscar..." />
             <button id="btnBusca">Buscar</button>
         </div>
         <div class="botoes">
@@ -18,20 +70,32 @@
             <input type="button" value="SAIR" class="btn sair">
         </div>
     </div>
-    <div class="conteudo">
-        <table border="1">
-            <thead>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-            </thead>
-            <tr>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
-        </table>
+    <div class="corpo-pesquisa">
+        <div class="divCabecalho" id="divCabecalho">    
+            <table id="tabela">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>NOME</td>
+                        <td>SOBRENOME</td>
+                        <td>CPF</td>
+                        <td>SENHA</td>
+                        <td>NASCTO</td>
+                        <td>TELEFONE</td>
+                        <td>E-MAIL</td>
+                        <td>AÇÂO</td>
+                        </tr>                        
+                </thead>
+            </table>        
+        </div>
+        <div class="corpo" id="corpo"></div>
     </div>
-    
+    </div>
+    <table>
+        <thead>
+
+        </thead>
+    </table>
 </body>
+
 </html>
