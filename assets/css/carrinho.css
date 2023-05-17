@@ -52,7 +52,7 @@ main a{
 }
 
 .preco-produto, .total{
-    color: #FE6C3E;
+    color: #2A553E;
     font-weight: bold;
 }
 
@@ -82,7 +82,7 @@ strong{
 }
 
 .estoque{
-    color: #FF9270;
+    color: #2A553E;
 }
 
 .total{
