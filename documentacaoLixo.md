@@ -26,5 +26,3 @@
 * colocar primeira imagem heig 100%
 * testar outra imagem como primeira
 * trocar nome da classe
-
-* vou usar a mesma pagina de carrinho do corbus
