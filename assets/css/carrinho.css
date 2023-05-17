@@ -1,0 +1,94 @@
+main{
+    padding-top: 10%;
+    width: 1140px;
+    margin: 0 auto;
+}
+
+main h2{
+    margin-left: 35%;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #383838;
+    text-align: left;
+}
+
+main a{
+    color: #383838;
+}
+
+#tabela-carrinho{
+    width: 100%;
+}
+
+#tabela-carrinho th, td{
+    padding: 0.5em;
+    border-bottom: #383838 1px dotted;
+}
+
+#tabela-carrinho th{
+    font-size: 0.8em;
+    font-weight: 500;
+    text-align: left;
+}
+
+#tabela-carrinho td{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.coluna-pequena{
+    width: 8em;
+}
+
+.nome-produto{
+    font-size: 1.2em;
+    color: #383838;
+    text-decoration: none;
+}
+
+.nome-marca{
+    color: #383838;
+    text-decoration: none;
+}
+
+.preco-produto, .total{
+    color: #FE6C3E;
+    font-weight: bold;
+}
+
+.remover-carrinho{
+    font-size: 0.8em;
+}
+
+.produto-car{
+    row-gap: 10px;
+}
+
+.capa{
+    height: 200px;
+}
+
+.coluna-capa{
+    width: 8em;
+}
+
+.presente{
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+strong{
+    font-weight: bold;
+}
+
+.estoque{
+    color: #FF9270;
+}
+
+.total{
+    align-items: right;
+}
+
+.texto-total{
+    text-align: right;
+}
