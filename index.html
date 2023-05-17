@@ -196,27 +196,50 @@
     </section>
 
     <!-- contato -->
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#form-contato').submit(function(){
+                var confirmar = confirm("Confirmar Envio?");
+                if (confirmar) {
+                    var dados = $(this).serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "sugestao.php",
+                        data: dados,
+                        success: function(data){
+                            alert("Obrigado Pelo Seu Contato!");
+                            $('#form-contato')[0].reset();                            
+                        }
+                    });                    
+                }
+                return false;
+            });
+        });        
+    </script>
+
     <main class="form-container" id="contato">
         <div class="img-contato">
             <img src="/assets/imagens/retrato2000.png" width="50%" height="720px">
         </div>
         <div class="form-contato">
-            <form action="" class="form-contato">
+            <form action="" method="" class="form-contato" id="form-contato">
 
                 <label for="nome" class="fonte-campo">Nome</label><br>
-                <input type="text" id="nome" name="nome" size="50"><br><br>
+                <input type="text" id="sug_nome" name="sug_nome" size="50" maxlength="50"><br><br>
 
 
                 <label for="email" class="fonte-campo">Email</label><br>
-                <input type="text" id="email" name="email" size="50"><br><br>
+                <input type="text" id="sug_email" name="sug_email" size="50" maxlength="50"><br><br>
 
                 <label for="assunto" class="fonte-campo">Assunto</label><br>
-                <textarea id="assunto" name="assunto" placeholder="Deixe sua sugestão, dúvida, e etc..."
-                    style="height:200px; width:425px"></textarea><br><br>
+                <textarea id="sug_assunto" name="sug_assunto" placeholder="Deixe sua sugestão, dúvida, e etc..."
+                    style="height:200px; width:425px" maxlength="500"></textarea><br><br>
 
                 <div class="buttons">
                     <input type="submit" value="Enviar" class="btn-enviar" onclick="obras()"> <br><br>
-                    <input type="submit" value="Limpar" class="btn-limpar" onclick=""> <br><br>
+                    <input type="reset" value="Limpar" class="btn-limpar" onclick=""> <br><br>
                 </div>
 
             </form>

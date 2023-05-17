@@ -40,9 +40,7 @@ $total = mysql_num_rows($query);
             <?php 
             
             if ($total == 0) {
-                ?>
-
-                
+                ?>                
 
                 <div class="container">
                     <div class="pesq item">            
