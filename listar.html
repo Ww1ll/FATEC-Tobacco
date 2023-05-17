@@ -8,6 +8,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
+        function alerta(id) {
+            alert(id);
+        }
+        
+        function apagar(id){            
+            $.ajax({
+                url: "apagar.php",
+                type: "POST",
+                data: {
+                    id: `${id}`
+                },
+                success: function(resposta){
+                    alerta(resposta);
+                }
+            });
+        }
+
+
         function buscaDados() {
             $.ajax({
                 url: "getDados.php",
@@ -27,6 +45,7 @@
                         <td>${usuario[index].nascto}</td>
                         <td>${usuario[index].telefone}</td>
                         <td>${usuario[index].email}</td>
+                        <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" onclick="apagar(this.value)" >APAGAR</button></td>
                          </tr>
                         `);                                                
                     }
@@ -64,6 +83,7 @@
                         <td>NASCTO</td>
                         <td>TELEFONE</td>
                         <td>E-MAIL</td>
+                        <td>AÇÂO</td>
                         </tr>                        
                 </thead>
             </table>        
@@ -71,7 +91,6 @@
         <div class="corpo" id="corpo"></div>
     </div>
     </div>
-
     <table>
         <thead>
 
