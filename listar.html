@@ -20,9 +20,16 @@
                     id: `${id}`
                 },
                 success: function(resposta){
-                    alerta(resposta);
+                    alerta(resposta); 
+                    refresh();                                       
                 }
             });
+        }
+
+        function refresh() {
+            var div = document.getElementById("corpo-pesquisa");            
+            $("#divCabecalho").html("");
+            buscaDados();
         }
 
 
@@ -32,7 +39,26 @@
                 type: "GET",
                 success: function (resposta) {
                     const usuario = JSON.parse(resposta);
-                    var tamanho = usuario.length;                    
+                    var tamanho = usuario.length; 
+                    
+                    $("#divCabecalho").append(`
+                    <table id="tabela">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>NOME</td>
+                                <td>SOBRENOME</td>
+                                <td>CPF</td>
+                                <td>SENHA</td>
+                                <td>NASCTO</td>
+                                <td>TELEFONE</td>
+                                <td>E-MAIL</td>
+                                <td>AÇÂO</td>
+                            </tr>
+                            <tr id="linha"></tr>                        
+                        </thead>
+                    </table>
+                    `);
 
                     for (let index = 0; index < tamanho; index++) {
                         $("#tabela").append(`
@@ -58,7 +84,7 @@
     <title>Usuários</title>
 </head>
 
-<body onload="buscaDados()">
+<body onload="refresh()">
     <div class="header">
         <div id="divBusca">
             <img src="assets/imagens/lupa_pesquisa.svg" alt="Buscar..." />
@@ -70,9 +96,11 @@
             <input type="button" value="SAIR" class="btn sair">
         </div>
     </div>
-    <div class="corpo-pesquisa">
+    <input type="button" value="INCLUI" onclick="buscaDados()">
+    <input type="button" value="ATUALIZA" onclick="refresh()">
+    <div class="corpo-pesquisa" id="corpo-pesquisa">
         <div class="divCabecalho" id="divCabecalho">    
-            <table id="tabela">
+            <!-- <table id="tabela">
                 <thead>
                     <tr>
                         <td>ID</td>
@@ -84,9 +112,13 @@
                         <td>TELEFONE</td>
                         <td>E-MAIL</td>
                         <td>AÇÂO</td>
-                        </tr>                        
+                    </tr>
+                    <tr id="linha"></tr>                        
                 </thead>
-            </table>        
+            </table>         -->
+            <table id="tabela2">
+
+            </table>
         </div>
         <div class="corpo" id="corpo"></div>
     </div>
