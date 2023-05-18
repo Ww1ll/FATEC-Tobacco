@@ -7,76 +7,90 @@
     <link rel="stylesheet" href="assets/css/listagens.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script>
-        function alerta(id) {
-            alert(id);
-        }
-        
-        function apagar(id){            
+    <script>       
+
+        function apagar(id) {
             $.ajax({
                 url: "apagar.php",
                 type: "POST",
                 data: {
                     id: `${id}`
                 },
-                success: function(resposta){
-                    alerta(resposta); 
-                    refresh();                                       
+                success: function (resposta) {
+                    alerta(resposta);
+                    refresh("");
                 }
             });
         }
 
-        function refresh() {
-            var div = document.getElementById("corpo-pesquisa");            
+        function refresh(nome) {            
+            var div = document.getElementById("corpo-pesquisa");
             $("#divCabecalho").html("");
-            buscaDados();
+            buscaDados(nome);
         }
 
+        function pesquisar(nome) {
+            var valor = document.getElementById(nome); 
+            refresh(valor.value);
+        }
 
-        function buscaDados() {
+        function buscaDados(nome) {            
             $.ajax({
-                url: "getDados.php",
-                type: "GET",
+                url: `getDados.php?nome=${nome}`,
+                type: "GET",                
                 success: function (resposta) {
                     const usuario = JSON.parse(resposta);
-                    var tamanho = usuario.length; 
-                    
+                    var tamanho = usuario.length;
+
                     $("#divCabecalho").append(`
-                    <table id="tabela">
-                        <thead>
-                            <tr>
-                                <td>ID</td>
-                                <td>NOME</td>
-                                <td>SOBRENOME</td>
-                                <td>CPF</td>
-                                <td>SENHA</td>
-                                <td>NASCTO</td>
-                                <td>TELEFONE</td>
-                                <td>E-MAIL</td>
-                                <td>AÇÂO</td>
-                            </tr>
-                            <tr id="linha"></tr>                        
-                        </thead>
+                    <table id="tabela">                                     
+                        <tr>
+                            <td>ID</td>
+                            <td>NOME</td>
+                            <td>SOBRENOME</td>
+                            <td>CPF</td>
+                            <td>SENHA</td>
+                            <td>NASCTO</td>
+                            <td>TELEFONE</td>
+                            <td>E-MAIL</td>
+                            <td>AÇÂO</td>
+                        </tr>
+                        <tr id="linha"></tr>                                                
                     </table>
                     `);
 
                     for (let index = 0; index < tamanho; index++) {
-                        $("#tabela").append(`
-                        <tr>
-                        <td>${usuario[index].id}</td>
-                        <td>${usuario[index].nome}</td>
-                        <td>${usuario[index].sobrenome}</td>
-                        <td>${usuario[index].cpf}</td>
-                        <td>${usuario[index].senha}</td>
-                        <td>${usuario[index].nascto}</td>
-                        <td>${usuario[index].telefone}</td>
-                        <td>${usuario[index].email}</td>
-                        <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" onclick="apagar(this.value)" >APAGAR</button></td>
-                         </tr>
-                        `);                                                
-                    }
-                    $("divCabecalho").append(`
-                    </table>`);
+                        if (usuario[index].nome == "ADMIN") {                            
+                            $("#tabela").append(`
+                            <tr>
+                            <td>${usuario[index].id}</td>
+                            <td>${usuario[index].nome}</td>
+                            <td>${usuario[index].sobrenome}</td>
+                            <td>${usuario[index].cpf}</td>
+                            <td>${usuario[index].senha}</td>
+                            <td>${usuario[index].nascto}</td>
+                            <td>${usuario[index].telefone}</td>
+                            <td>${usuario[index].email}</td>
+                            <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" class="btn sair" onclick="apagar(this.value)" disabled>APAGAR</button></td>
+                            </tr>
+                            `);
+                        }else{
+                            $("#tabela").append(`
+                            <tr>
+                            <td>${usuario[index].id}</td>
+                            <td>${usuario[index].nome}</td>
+                            <td>${usuario[index].sobrenome}</td>
+                            <td>${usuario[index].cpf}</td>
+                            <td>${usuario[index].senha}</td>
+                            <td>${usuario[index].nascto}</td>
+                            <td>${usuario[index].telefone}</td>
+                            <td>${usuario[index].email}</td>
+                            <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" onclick="apagar(this.value)" >APAGAR</button></td>
+                            </tr>
+                            `);
+                        }
+                        
+                    }                    
                 }
             })
         }
@@ -84,42 +98,20 @@
     <title>Usuários</title>
 </head>
 
-<body onload="refresh()">
+<body onload="refresh('')">
     <div class="header">
         <div id="divBusca">
             <img src="assets/imagens/lupa_pesquisa.svg" alt="Buscar..." />
             <input type="text" id="txtBusca" placeholder="Buscar..." />
-            <button id="btnBusca">Buscar</button>
+            <button id="btnBusca" onclick="pesquisar('txtBusca')">Buscar</button>
         </div>
         <div class="botoes">
             <input type="button" value="Voltar" class="btn voltar">
             <input type="button" value="SAIR" class="btn sair">
         </div>
-    </div>
-    <input type="button" value="INCLUI" onclick="buscaDados()">
-    <input type="button" value="ATUALIZA" onclick="refresh()">
+    </div>   
     <div class="corpo-pesquisa" id="corpo-pesquisa">
-        <div class="divCabecalho" id="divCabecalho">    
-            <!-- <table id="tabela">
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>NOME</td>
-                        <td>SOBRENOME</td>
-                        <td>CPF</td>
-                        <td>SENHA</td>
-                        <td>NASCTO</td>
-                        <td>TELEFONE</td>
-                        <td>E-MAIL</td>
-                        <td>AÇÂO</td>
-                    </tr>
-                    <tr id="linha"></tr>                        
-                </thead>
-            </table>         -->
-            <table id="tabela2">
-
-            </table>
-        </div>
+        <div class="divCabecalho" id="divCabecalho"></div>
         <div class="corpo" id="corpo"></div>
     </div>
     </div>
