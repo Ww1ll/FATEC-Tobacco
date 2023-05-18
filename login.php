@@ -4,22 +4,22 @@ Include 'conexao.php';
 
 $usuario = $_POST['txt_email'];
 $senha = $_POST['num_senha'];
+$array = array();
 
-$sql = mysql_query("select * from cad_user where (email = '$usuario' or cpf = '$usuario') and senha = '$senha'");
+$sql = mysql_query("select * from cad_user where email = '$usuario' and senha = '$senha'");
 
 if (mysql_num_rows($sql) == 1){
+    $sql = mysql_query("select nome, sobrenome from cad_user where email = '$usuario'");
     $linha = mysql_fetch_assoc($sql);  
-    if ($usuario == "admin") {
-        echo "<script>alert('Bem vindo Administrador!');
-        window.location = 'painel.html';</script>";    
-    }else{
-        echo "<script>alert('Bem vindo .$usuario!');
-        window.location = 'index.html';</script>";
+    $array[] = $linha;
+    if ($usuario == "ADMIN") {
+        echo json_encode($array);
+    }else{        
+        echo json_encode($array);
     }
 }
 else{ 
-    echo "<script>alert('Usuario ou senha incorretos!');
-        window.location = 'login.html';</script>";
+    echo "Não Encontrado";
 }
 
 
