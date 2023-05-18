@@ -19,6 +19,7 @@ if (isset($_GET['editar'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>EDITAR REGISTROS</title>
     <script src="assets/src/cpfFunc.js"></script>
     <script src="assets/src/phoneFunc.js"></script>
@@ -34,7 +35,7 @@ if (isset($_GET['editar'])) {
 <body>
     <form action="atualizar.php" class="form" method="post">
         <a href="home.html"><img src="imagens/tobacoII.png" width="70px" class="logo-form"></a>
-        <center><div class="title">Cadastre-se</div></center>
+        <center><div class="title">Atualização de Cadastro</div></center>
 
         <input type="hidden" name="txt_id" value="<?php echo  $linha["id"] ?>">
       <!-- CAMPO EMAIL -->
