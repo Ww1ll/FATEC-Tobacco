@@ -17,7 +17,7 @@
                     id: `${id}`
                 },
                 success: function (resposta) {
-                    alerta(resposta);
+                    alert(resposta);
                     refresh("");
                 }
             });
@@ -41,7 +41,7 @@
                 success: function (resposta) {
                     const usuario = JSON.parse(resposta);
                     var tamanho = usuario.length;
-
+                    
                     $("#divCabecalho").append(`
                     <table id="tabela">                                     
                         <tr>
@@ -58,6 +58,12 @@
                         <tr id="linha"></tr>                                                
                     </table>
                     `);
+
+                    if(tamanho == 0){
+                        $("#divCabecalho").append(`
+                        <center><h2>SEM REGISTROS ENCONTRADOS</h2></center>
+                        `);
+                    }
 
                     for (let index = 0; index < tamanho; index++) {
                         if (usuario[index].nome == "ADMIN") {                            
@@ -85,7 +91,7 @@
                             <td>${usuario[index].nascto}</td>
                             <td>${usuario[index].telefone}</td>
                             <td>${usuario[index].email}</td>
-                            <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" onclick="apagar(this.value)" >APAGAR</button></td>
+                            <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" class="btn sair" onclick="apagar(this.value)">APAGAR</button></td>
                             </tr>
                             `);
                         }
