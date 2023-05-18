@@ -26,5 +26,5 @@ $sql = mysql_query("update cad_user set
 ?>
 <script>
     alert("REGISTRO ATUALIZADO COM SUCESSO!");
-    window.location="listar.php";
+    window.location="listar.html";
 </script>

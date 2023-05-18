@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="assets/css/listagens.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script>       
-
+    <script>
         function apagar(id) {
             $.ajax({
                 url: "apagar.php",
@@ -23,28 +22,28 @@
             });
         }
 
-        function refresh(nome) {            
+        function refresh(nome) {
             var div = document.getElementById("corpo-pesquisa");
             $("#divCabecalho").html("");
             buscaDados(nome);
         }
 
         function pesquisar(nome) {
-            var valor = document.getElementById(nome); 
+            var valor = document.getElementById(nome);
             refresh(valor.value);
         }
 
-        function buscaDados(nome) {            
+        function buscaDados(nome) {
             $.ajax({
                 url: `getDados.php?nome=${nome}`,
-                type: "GET",                
+                type: "GET",
                 success: function (resposta) {
                     const usuario = JSON.parse(resposta);
                     var tamanho = usuario.length;
-                    
+
                     $("#divCabecalho").append(`
                     <table id="tabela">                                     
-                        <tr>
+                        <tr id="topo">
                             <td>ID</td>
                             <td>NOME</td>
                             <td>SOBRENOME</td>
@@ -53,20 +52,20 @@
                             <td>NASCTO</td>
                             <td>TELEFONE</td>
                             <td>E-MAIL</td>
-                            <td>AÇÂO</td>
+                            <td>AÇÃO</td>
                         </tr>
                         <tr id="linha"></tr>                                                
                     </table>
                     `);
 
-                    if(tamanho == 0){
+                    if (tamanho == 0) {
                         $("#divCabecalho").append(`
                         <center><h2>SEM REGISTROS ENCONTRADOS</h2></center>
                         `);
                     }
 
                     for (let index = 0; index < tamanho; index++) {
-                        if (usuario[index].nome == "ADMIN") {                            
+                        if (usuario[index].nome == "ADMIN") {
                             $("#tabela").append(`
                             <tr>
                             <td>${usuario[index].id}</td>
@@ -77,10 +76,15 @@
                             <td>${usuario[index].nascto}</td>
                             <td>${usuario[index].telefone}</td>
                             <td>${usuario[index].email}</td>
-                            <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" class="btn sair" onclick="apagar(this.value)" disabled>APAGAR</button></td>
+                            <td id="testetd">
+                                <div class="acao">
+                                    <button value="${usuario[index].id}" name="btnApagar" id="btnApagar" class="btn sair" onclick="apagar(this.value)" disabled>APAGAR</button>
+                                    <button value="${usuario[index].id}" name="btnEditar" id="btnEditar" class="btn voltar">EDITAR</button>
+                                </div>                                
+                            </td>                            
                             </tr>
                             `);
-                        }else{
+                        } else {
                             $("#tabela").append(`
                             <tr>
                             <td>${usuario[index].id}</td>
@@ -91,15 +95,25 @@
                             <td>${usuario[index].nascto}</td>
                             <td>${usuario[index].telefone}</td>
                             <td>${usuario[index].email}</td>
-                            <td><button value="${usuario[index].id}" name="btnApagar" id="btnApagar" class="btn sair" onclick="apagar(this.value)">APAGAR</button></td>
+                            <td>
+                                <div class="acao">
+                                    <button value="${usuario[index].id}" name="btnApagar" id="btnApagar" class="btn sair" onclick="apagar(this.value)">APAGAR</button>
+                                    <button value="${usuario[index].id}" name="btnEditar" id="btnEditar" class="btn voltar" onclick="editar(this.value)">EDITAR</button>
+                                </div>
+                            </td>
                             </tr>
                             `);
                         }
-                        
-                    }                    
+
+                    }
                 }
             })
         }
+        
+        function editar(id) {            
+            window.location.href = `editar.php?editar=${id}`;
+        }
+    
     </script>
     <title>Usuários</title>
 </head>
@@ -115,7 +129,7 @@
             <input type="button" value="Voltar" class="btn voltar">
             <input type="button" value="SAIR" class="btn sair">
         </div>
-    </div>   
+    </div>
     <div class="corpo-pesquisa" id="corpo-pesquisa">
         <div class="divCabecalho" id="divCabecalho"></div>
         <div class="corpo" id="corpo"></div>
