@@ -7,32 +7,12 @@
     <link rel="stylesheet" href="assets/css/cadastro.css">
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#frmLogin').submit(function(){          
-          var dados = $(this).serialize();
-          
-          $.ajax({
-            type: "POST",
-            url: "login.php",
-            data: dados,
-            success: function(resposta){
-              const logado = JSON.parse(resposta);
-              alert("Bem vindo "+logado[0].nome+".");
-            }
-          });
-
-          return false;
-          
-        });
-      });
-    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>    
     
     <title>Tobacco | Login</title>
 </head>
-<body>
-    <form action="" class="form" method="" name="frmLogin" id="frmLogin">
+<body>    
+    <form action="login.php" class="form" method="post" name="frmLogin" id="frmLogin" autocomplete="off">
     <a href="index.html"><img src="imagens/tobacoII.png" class="logo-form"></a>
         <center><div class="title">Login</div></center>
         <div class="input-div div1">
@@ -51,7 +31,7 @@
         
         <!-- onclick vazio por enquanto, pode inserir de acordo com o arquivo que vc criar -->
         <button type="submit" class="btn-entrar" name="btn-login" value="ENTRAR">ENTRAR</button>
-        <button type="button" class="btn-limpar" name="btn-limpar" value="LIMPAR" onClick="limpar()">LIMPAR</button>
+        <button type="reset" class="btn-limpar" name="btn-limpar" value="LIMPAR">LIMPAR</button>
         <a href="cadastro.html"><center><hr><h4>Cadastre-se</h4></center></a>
       </form> 
 </body>

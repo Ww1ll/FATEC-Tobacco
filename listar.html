@@ -9,15 +9,33 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
         function apagar(id) {
+            var confirma = confirm("Deseja continuar com a exclusão?");
+
+            if (confirma) {
+                $.ajax({
+                    url: "apagar.php",
+                    type: "POST",
+                    data: {
+                        id: `${id}`
+                    },
+                    success: function (resposta) {
+                        alert(resposta);
+                        refresh("");
+                    }
+                });                
+            }
+        }
+
+        function getUser() {
             $.ajax({
-                url: "apagar.php",
-                type: "POST",
-                data: {
-                    id: `${id}`
-                },
-                success: function (resposta) {
-                    alert(resposta);
-                    refresh("");
+                type: "GET",
+                url: "quem.php",
+                success: function(resposta){ 
+                    if (!resposta) {
+                        window.location = "login.html"
+                    }else{
+                        $("#user_log").html("Usuário logado: "+resposta);
+                    }                   
                 }
             });
         }
@@ -25,7 +43,7 @@
         function refresh(nome) {
             var div = document.getElementById("corpo-pesquisa");
             $("#divCabecalho").html("");
-            buscaDados(nome);
+            buscaDados(nome);            
         }
 
         function pesquisar(nome) {
@@ -118,14 +136,15 @@
     <title>Usuários</title>
 </head>
 
-<body onload="refresh('')">
+<body onload="refresh(''); getUser()">
     <div class="header">
         <div id="divBusca">
             <img src="assets/imagens/lupa_pesquisa.svg" alt="Buscar..." />
             <input type="text" id="txtBusca" placeholder="Buscar..." />
             <button id="btnBusca" onclick="pesquisar('txtBusca')">Buscar</button>
         </div>
-        <div class="botoes">
+        <div id="user_log"></div>
+        <div class="botoes" id="botoes">
             <input type="button" value="Voltar" class="btn voltar">
             <input type="button" value="SAIR" class="btn sair">
         </div>
