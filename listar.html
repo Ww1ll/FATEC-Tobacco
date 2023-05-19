@@ -9,17 +9,21 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
         function apagar(id) {
-            $.ajax({
-                url: "apagar.php",
-                type: "POST",
-                data: {
-                    id: `${id}`
-                },
-                success: function (resposta) {
-                    alert(resposta);
-                    refresh("");
-                }
-            });
+            var confirma = confirm("Deseja continuar com a exclusão?");
+
+            if (confirma) {
+                $.ajax({
+                    url: "apagar.php",
+                    type: "POST",
+                    data: {
+                        id: `${id}`
+                    },
+                    success: function (resposta) {
+                        alert(resposta);
+                        refresh("");
+                    }
+                });                
+            }
         }
 
         function refresh(nome) {
