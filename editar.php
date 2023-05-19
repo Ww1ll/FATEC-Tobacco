@@ -9,7 +9,7 @@ if (isset($_GET['editar'])) {
 }else{
     ?>
     <script>
-        window.location="index.html";
+        window.location="listar.html";
     </script>
     <?php
 }
@@ -19,20 +19,23 @@ if (isset($_GET['editar'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>EDITAR REGISTROS</title>
+    <script src="assets/src/cpfFunc.js"></script>
+    <script src="assets/src/phoneFunc.js"></script>
     <script>
         function voltar() {
-            window.location="listar.php"
+            window.location="listar.html"
         }
     </script>
-    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="assets/css/cadastro.css">
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
 
 </head>
 <body>
     <form action="atualizar.php" class="form" method="post">
         <a href="home.html"><img src="imagens/tobacoII.png" width="70px" class="logo-form"></a>
-        <center><div class="title">Cadastre-se</div></center>
+        <center><div class="title">Atualização de Cadastro</div></center>
 
         <input type="hidden" name="txt_id" value="<?php echo  $linha["id"] ?>">
       <!-- CAMPO EMAIL -->
@@ -58,7 +61,7 @@ if (isset($_GET['editar'])) {
 
         <!-- CAMPO CPF -->
         <div class="input-div div2">
-          <input name="num_cpf" id="cpf" class="input" type="number" value="<?php echo  $linha["cpf"] ?>" />
+          <input name="num_cpf" id="cpf" class="input" type="text" maxlength="14" onkeyup="getCPF(event)" value="<?php echo  $linha["cpf"] ?>" />
           <div class="efeito"></div>
           <label for="cpf" class="placeholder">CPF</label>
         </div>
@@ -79,7 +82,7 @@ if (isset($_GET['editar'])) {
 
         <!-- CAMPO TELEFONE -->
         <div class="input-div div2">
-          <input id="tel" class="input" name="num_tel" type="tel" inputmode="numeric" maxlength="11" value="<?php echo  $linha["telefone"] ?>" />
+          <input id="tel" class="input" name="num_tel" type="tel" inputmode="numeric" maxlength="15" onkeyup="handlePhone(event)" value="<?php echo  $linha["telefone"] ?>" />
           <!--<input id="tel" class="input" name="num_tel" type="number" pattern="[0-9\s]{13,19}" maxlength="11" placeholder=" " />-->
           <div class="efeito"></div>
           <label for="tel" class="placeholder">Telefone</label>

@@ -1,30 +1,20 @@
 <?php
+Include 'conexao.php';
 
-try {        
-    Include 'conexao.php';
+$nome = $_GET['nome'];
 
-    $sql = "select * from cad_user order by nome";
-    $result = mysql_query($sql);
-    
-    $array = array();
-    
-    while ($row = mysql_fetch_assoc($result)) {
-        $array[] = $row;
-    }
+if ($nome == "") {
+    $sql = "select * from cad_user order by nome";    
+}else{
+    $sql = "select * from cad_user where nome like '{$nome}%' order by nome";        
+}
+$result = mysql_query($sql);
 
-    echo json_encode($array);
+$array = array();
 
-    
-    // do {
-    //     echo json_encode($row = mysql_fetch_assoc($result));
-    //     # code...
-    // } while ($row = mysql_fetch_assoc($result));    
-    
-    
-} catch (\Exception $e) {
-    echo "erro 1";
+while ($row = mysql_fetch_assoc($result)) {
+    $array[] = $row;
 }
 
-
-
+echo json_encode($array);
 ?>
