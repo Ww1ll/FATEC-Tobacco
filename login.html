@@ -18,8 +18,9 @@
             url: "login.php",
             data: dados,
             success: function(resposta){
-              const logado = JSON.parse(resposta);
-              alert("Bem vindo "+logado[0].nome+".");
+              alert(resposta);              
+              // const logado = JSON.parse(resposta);
+              // alert("Bem vindo "+logado[0].nome+".");
             }
           });
 

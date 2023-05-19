@@ -39,7 +39,7 @@ tr:hover{
 
 #divBusca {
     background-color: #E0EEEE;
-    border: solid 2px #03d0f6;
+    border: solid 2px #0986a6;
     border-radius: 10px;
     width: 500px;
     height: 32px;     
@@ -84,8 +84,15 @@ tr:hover{
 }
 
 .header{
+    align-items: center;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
+    
+    /* display: flex;
+    margin: 0 auto;
+    justify-content: space-between; */
 }
 
 .btn{
