@@ -322,21 +322,21 @@ footer {
 
 /*Incorporar isso na página de produtos*/
 @media screen and (min-width: 380px) {
-    .pokemons {
+    .products {
         grid-template-columns: 1fr 1fr;
     }
 
 }
 
 @media screen and (min-width: 576px) {
-    .pokemons {
+    .products {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
 }
 
 @media screen and (min-width: 992px) {
-    .pokemons {
+    .products {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
