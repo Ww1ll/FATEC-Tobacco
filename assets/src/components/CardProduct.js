@@ -27,6 +27,9 @@ class CardProduct extends HTMLElement{
         // Funcao hover
         productImage.addEventListener('mouseover', ()=>{
             productImage.src = this.getAttribute('photo') || '/assets/imagens/default.png'; 
+            const icon = document.createElement('ion-icon');
+            icon.setAttribute('name', 'add-circle-outline');
+            productImage.appendChild(icon);
         });
 
         productImage.addEventListener('mouseout', () =>{
@@ -53,10 +56,17 @@ class CardProduct extends HTMLElement{
 
         // imageContainer.appendChild(hoverImage); 
         imageContainer.appendChild(productImage);
-        
+
+        const shopBtnContainer = document.createElement("div");
+        const shopBtn = document.createElement("button");
+        shopBtn.textContent = "SHOP";
+        shopBtn.setAttribute("class", "btn-shop");        
+
+        shopBtnContainer.appendChild(shopBtn);
 
         componentRoot.appendChild(imageContainer);
         componentRoot.appendChild(prodInfo);
+        componentRoot.appendChild(shopBtnContainer);
 
         return componentRoot;
     }
@@ -100,6 +110,20 @@ class CardProduct extends HTMLElement{
         #image2 img{
             width: 90%;
         } 
+        .btn-shop{
+            border-radius: 15px;
+            width: 20%;
+            border: 2px solid #2A553E;
+            color: #2A553E;
+            font-weight: 350;
+        }
+        .btn-shop:hover{
+            background-color: #2A553E;
+            color: #f0f0f0;
+            border: 2px solid #2A553E;
+            cursor: pointer;
+        }
+
         `
 
         return style;

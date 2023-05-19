@@ -23,8 +23,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
         integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+      
     <title>Tobacco | Tabacaria</title>
+    <!-- funcao do efeito de transicao de cor -->
     <script>
         $(document).ready(function () {
             $(window).bind('scroll', function () {
@@ -59,8 +60,8 @@
                     <li><a href="#sobre">SOBRE</a></li>
                 </ul>
                 <ul class="icons-nav">
-                    <li><ion-icon name="person-outline" size="large"></ion-icon></li>
-                    <li><ion-icon name="cart-outline" size="large"></ion-icon></li>
+                    <a href="login.html"><li><ion-icon name="person-outline" size="large"></ion-icon></li></a>
+                    <a href="carrinho.html"><li><ion-icon name="cart-outline" size="large"></ion-icon></li></a>
                 </ul>
             </nav>
 
@@ -74,7 +75,7 @@
             <!-- <center><h3><a href="#contato" class="link-contato">CONTATO</a></h3></center> -->
         </div>
     </section>
-    <div class="div-marqee">
+    <!-- <div class="div-marqee">
         <marquee behavior="" direction="">
             <div class="marqe">
                 <img src="assets/imagens/TobaccoRebrand.png" height="72px">
@@ -86,7 +87,7 @@
             </div>
         </marquee>
 
-    </div>
+    </div> -->
     <main class="products">
         <card-product 
         image="/assets/imagens/products/behike/001cohiba(4).png"
@@ -128,6 +129,11 @@
                 <div class="sub-info">
                     <div class="price">$2000</div>
                 </div>
+                <div>
+                    <button class="btn-shop">
+                    SHOP    
+                    </button>
+                </div>
             </div>
         </div>
         <div class="card">
@@ -139,6 +145,11 @@
                 <div class="sub-info">
                     <div class="price">$2000</div>
                 </div>
+                <div>
+                    <button class="btn-shop">
+                    SHOP    
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -149,7 +160,7 @@
         <card-product></card-product>
         <card-product></card-product>
     </main>
-    <div class="div-marqee">
+    <!-- <div class="div-marqee">
         <marquee behavior="" direction="">
             <div class="marqe">
                 <img src="assets/imagens/TobaccoRebrand.png" height="72px">
@@ -161,7 +172,7 @@
             </div>
         </marquee>
 
-    </div>
+    </div> -->
     <!-- Arrumar alinhamento e responsividade -->
     <!-- sobre -->
     <main class="descricao-tobbaco" id="sobre">
@@ -267,6 +278,10 @@
     <footer>
         <div class="footer">
             <img src="/assets/imagens/TOBACCO.png" alt="">
+            <!-- <ul class="lista-footer">
+                <li>Termos</li>
+                <li>Sociais</li>
+            </ul> -->
         </div>
     </footer>
 
