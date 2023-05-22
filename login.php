@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,11 @@
 <body>
     
 </body>
-</html>
+</html> -->
 
 
 <?php
+header("Content-type: text/html; charset=utf-8"); 
 
 Include 'conexao.php';
 
