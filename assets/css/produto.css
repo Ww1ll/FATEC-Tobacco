@@ -5,7 +5,8 @@
     width: 100%;
     height: calc(100vh - 85px);
     padding-top: 30%;
-    margin-bottom: 50vh;
+    margin-bottom: 75vh;
+    margin-left: 5%;
 
 }
 
@@ -52,7 +53,7 @@
 }
 
 .right-side h2{
-    color: #FE6C3E;
+    color: #2A553E;
 }
 
 
@@ -103,7 +104,7 @@
     display: inline-block;
     text-decoration: none;
     color: #fff;
-    background-color: #FE6C3E;
+    background-color: #2A553E;
     padding: 20px 35px;
     border-radius: 10px;
     display: flex;
@@ -119,7 +120,7 @@
 }
 
 .btn-carrinho:hover{
-    background-color: #383838;
+    background-color: #C9A175;
     color: #e2e2e2;
 }
 
