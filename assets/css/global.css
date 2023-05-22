@@ -280,6 +280,7 @@ footer {
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-top: 25vh;
 }
 
 .lista-footer {
