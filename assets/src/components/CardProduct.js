@@ -17,23 +17,23 @@ class CardProduct extends HTMLElement{
         imageContainer.setAttribute("class", "image");
 
         const productImage = document.createElement("img");
-        productImage.src = this.getAttribute("image") || "/assets/imagens/default2.png"; //inserir photo nas pastas
+        productImage.src = this.getAttribute("image") || "assets/imagens/default2.png"; //inserir photo nas pastas
         productImage.alt = "Foto do produto";
 
         const hoverImage = document.createElement("img"); 
-        hoverImage.src = this.getAttribute('photo') || '/assets/imagens/default.png';
+        hoverImage.src = this.getAttribute('photo') || 'assets/imagens/default.png';
 
 
         // Funcao hover
         productImage.addEventListener('mouseover', ()=>{
-            productImage.src = this.getAttribute('photo') || '/assets/imagens/default.png'; 
+            productImage.src = this.getAttribute('photo') || 'assets/imagens/default.png'; 
             const icon = document.createElement('ion-icon');
             icon.setAttribute('name', 'add-circle-outline');
             productImage.appendChild(icon);
         });
 
         productImage.addEventListener('mouseout', () =>{
-            productImage.src = this.getAttribute('image') || '/assets/imagens/default2.png';
+            productImage.src = this.getAttribute('image') || 'assets/imagens/default2.png';
         });
 
         const prodInfo = document.createElement("div");
@@ -92,7 +92,7 @@ class CardProduct extends HTMLElement{
         } 
         
         .image img:hover{
-            // content: url("/assets/imagens/default.png");
+            // content: url("assets/imagens/default.png");
             cursor: pointer;
         }
         
