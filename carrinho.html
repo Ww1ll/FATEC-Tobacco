@@ -26,6 +26,19 @@
     <title>Carrinho de compras</title>
 </head>
 <body>
+    <script>
+        $(document).ready(function () {
+            $(window).bind('scroll', function () {
+                let gap = 100
+
+                if ($(window).scrollTop() > gap) {
+                    $('header').addClass('active')
+                } else {
+                    $('header').removeClass('active')
+                }
+            })
+        })
+    </script>
     <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
@@ -62,16 +75,17 @@
                     <th class="coluna-pequena">Quantidade</th>
                 </tr>
             </thead>
+            <!-- produto aqui -->
             <tbody>
                     <tr id="item01">
                         <td class="coluna-capa">
-                            <img src="imagens/adidas/gc/001.jpg" width="200px" height="200px" class="capa">
+                            <img src="/assets/imagens/products/RapeXingu/001(2).png" width="200px" height="200px" class="capa">
                         </td>
                 
                         <td> 
                             <div class="produto-car">
-                                <a href="" class="nome-produto">Grand Court</a>
-                                <a href="" class="nome-marca">Adidas</a>
+                                <a href="" class="nome-produto">Rape xingu</a>
+                                <a href="" class="nome-marca">Rape</a>
                             </div>
                             <strong class="estoque">Em estoque</strong>
                             <div>
@@ -79,30 +93,7 @@
                             </div>
                             <a href="" class="remover-carrinho"  onclick="remover()">Tirar do carrinho</a>
                         </td>
-                        <td colspan="2"><span class="preco-produto">R$230.00</span></td>
-                        <td>
-                            <input type="number" value="1" min="0" max="5">
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr id="item02">
-                        <td class="coluna-capa">
-                            <img src="imagens/calcados/TÊNIS MERCEDES-AMG PETRONAS FORMULA 1 DRIFT CAT DECIMA MOTORSPORT/001.webp" width="200px" height="200px" class="capa">
-                        </td>
-                
-                        <td> 
-                            <div class="produto-car">
-                                <a href="" class="nome-produto">Tênis Mercedes AMG</a>
-                                <a href="" class="nome-marca">Puma</a>
-                            </div>
-                            <strong class="estoque">Em estoque</strong>
-                            <div>
-                                <label class="presente"><input type="checkbox">Presente</label>
-                            </div>
-                            <a href="" class="remover-carrinho" onclick="remover()">Tirar do carrinho</a>
-                        </td>
-                        <td colspan="2"><span class="preco-produto">R$649.90</span></td>
+                        <td colspan="2"><span class="preco-produto">R$49.99</span></td>
                         <td>
                             <input type="number" value="1" min="0" max="5">
                         </td>
@@ -115,8 +106,10 @@
                         <!-- <td>&nbsp;</td> -->
                     </tr>
                 </tfoot>
-        </table>
-        <br><br>
+            </table>
+            <div class="buttons">
+            <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br>
+        </div>
     </main>
     <footer>
         <div class="footer">

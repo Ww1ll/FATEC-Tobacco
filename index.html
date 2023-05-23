@@ -18,11 +18,13 @@
         href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@100;300;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/modal.css">
     <link rel="shortcut icon" href="assets/imagens/fav/favicon-16x16.png" type="image/x-icon">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
         integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
       
     <title>Tobacco | Tabacaria</title>
     <!-- funcao do efeito de transicao de cor -->
@@ -67,6 +69,23 @@
 
         </div>
     </header>
+    <!-- modal idade -->
+    <dialog id="modalTobacco">
+        <center>
+            <img src="/assets/imagens/TobaccoRebrand.png" alt="Tobaccco is awesome" width="10%">
+        <h2>Bem-vindo à Tobacco! </h2><br>
+        <p>
+            Por favor, esteja ciente de que este site destina-se apenas a maiores de idade. <br>
+             É importante respeitar a legislação em vigor e garantir a segurança de nossos visitantes. <br>
+             Ao prosseguir, você confirma que tem a idade legal necessária para acessar este conteúdo. <br>
+             Agradecemos sua compreensão e colaboração.
+        </p><br>
+        <div class="buttons-modal">
+        <button id="maisDezoito" class="btnMaior">Ok, desejo continuar</button>
+        <button id="menorDezoito" class="btnMenor">Sou menor de idade</button>
+        </div>
+    </center>
+    </dialog>
     <section id="content1" class="content1">
         <div class="bg-image">
             <img src="assets/imagens/cohiba.png" width="100%" height="100%">
@@ -109,12 +128,12 @@
         price="R$4860"
         ></card-product>
 
-        <card-product
+        <a href="/assets/produtos/produto.html"><card-product
         image="/assets/imagens/products/RapeXingu/001(2).png"
         photo="/assets/imagens/products/RapeXingu/003.png"
-        title="Conjunto behike" 
+        title="Rapé Xingu" 
         price="R$50"
-        ></card-product>
+        ></card-product></a>
 
         
 
@@ -294,6 +313,7 @@
     <!-- ionic -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/assets/src/modal.js"></script>
 </body>
 
 </html>
