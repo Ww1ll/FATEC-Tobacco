@@ -21,6 +21,14 @@
     margin-bottom: 10px;
 }
 
+img{
+    width: 90px;
+}
+
+img:hover{
+    width: 180px;
+}
+
 .linha input[type="text"], input[type="number"]{
     padding: 5px;
 }
