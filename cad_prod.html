@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/cad-prod.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <title>Cadastro de Produtos</title>
+</head>
+
+<body>
+    <div class="header">       
+        <div id="user_log"></div>
+        <div class="botoes" id="botoes">            
+            <input type="button" value="SAIR" class="btn sair" onclick="sair()">
+        </div>
+    </div>
+
+    <div class="cad-prod">
+        <form action="cad_prod.php" method="post" name="cad-prod" id="cad-prod" required>
+            <div class="linha">
+                <label for="">Código do produto:</label>
+                <input type="text" name="cod_prod" id="cod_prod" required>
+            </div>
+            <div class="linha">
+                <label for="">Endereço da imagem:</label>
+                <input type="text" name="img_prod" id="img_prod" required>
+            </div>
+            <div class="linha">
+                <label for="">Desc. do produto:</label>
+                <input type="text" name="desc_prod" id="desc_prod" required>
+            </div>
+            <div class="linha">
+                <label for="">Preço do produto:</label>
+                <input type="number" min="1" name="preco_prod" id="preco_prod" required>
+            </div>
+            <div class="botoes">
+                <input type="submit" value="ENVIAR">
+                <input type="reset" value="LIMPAR" name="" id="">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -26,6 +26,22 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script src="assets/src/components/node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-pf_dom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function userLogged() {
+            $.ajax({
+                type: "GET",
+                url: "quem.php",
+                success: function(resposta){
+                    if(!resposta){
+                        $("#user").html("Faça Login!");
+                    }else{
+                        $("#user").html("Bem vindo "+resposta);
+                    }
+                }
+            })
+        }
+    </script>
       
     <title>Tobacco | Tabacaria</title>
     <!-- funcao do efeito de transicao de cor -->
@@ -44,7 +60,7 @@
     </script>
 </head>
 
-<body>
+<body onload="userLogged()">
     <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
