@@ -9,19 +9,40 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cad-prod').submit(function (e) {
+                e.preventDefault();
+                var dados = $(e.target).serialize();                
+                $.ajax({
+                    url: "cad_prod.php",
+                    type: "POST",
+                    data: dados,
+                    success: function (data) {
+                        if (data == "") {
+                            alert('Produto Já Cadastrado!');
+                        }else{
+                            alert(data);
+                            $('#cad-prod')[0].reset();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     <title>Cadastro de Produtos</title>
 </head>
 
 <body>
-    <div class="header">       
+    <div class="header">
         <div id="user_log"></div>
-        <div class="botoes" id="botoes">            
+        <div class="botoes" id="botoes">
             <input type="button" value="SAIR" class="btn sair" onclick="sair()">
         </div>
     </div>
 
     <div class="cad-prod">
-        <form action="cad_prod.php" method="post" name="cad-prod" id="cad-prod" required>
+        <form action="" method="" name="cad-prod" id="cad-prod" required>
             <div class="linha">
                 <label for="">Código do produto:</label>
                 <input type="text" name="cod_prod" id="cod_prod" required>
