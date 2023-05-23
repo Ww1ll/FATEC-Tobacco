@@ -163,7 +163,7 @@ main{
 } 
 
 .image img:hover{
-    /* content: url("assets/imagens/default.png"); */
+    content: url("assets/imagens/default.png");
     cursor: pointer;
 }
 
