@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,11 @@
 <body>
     
 </body>
-</html>
+</html> -->
 
 
 <?php
+header("Content-type: text/html; charset=utf-8"); 
 
 Include 'conexao.php';
 
@@ -35,11 +36,19 @@ if (mysql_num_rows($sql) == 1){
     
     $_SESSION['usuario_nome'] = $nome;
     $_SESSION['usuario_sobrenome'] = $sobrenome;
-
-    echo "<script>
+    
+    if ($nome == "admin" || $nome == "ADMIN") {
+        echo "<script>
         alert('Bem vindo $nome');
         window.location = 'painel.html';
         </script>";
+    }else{
+        echo "<script>
+            alert('Bem vindo $nome');
+            window.location = 'index.html';
+            </script>";
+    }
+
     
 }
 else{ 

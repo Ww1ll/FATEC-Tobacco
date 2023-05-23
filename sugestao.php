@@ -1,5 +1,7 @@
 <?php
 
+header("Content-type: text/html; charset=utf-8"); 
+
 Include 'conexao.php';
 
 $nome = $_POST["sug_nome"];
