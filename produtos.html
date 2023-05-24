@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- usando normalize css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
         integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
@@ -13,20 +14,29 @@
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@100;300;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="shortcut icon" href="assets/imagens/fav/favicon-16x16.png" type="image/x-icon">
-    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js" integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
+        integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function teste(id) {
+            alert("teste"+id);
+        }
+    </script>
+
     <title>Tobacco | Produtos</title>
     <script>
-        $(document).ready(function(){
-            $(window).bind('scroll', function(){
+        $(document).ready(function () {
+            $(window).bind('scroll', function () {
                 let gap = 50
 
-                if($(window).scrollTop() > gap){
+                if ($(window).scrollTop() > gap) {
                     $('header').addClass('active')
                 } else {
                     $('header').removeClass('active')
@@ -35,31 +45,32 @@
         })
     </script>
 </head>
+
 <body>
     <header>
         <div class="container">
-             <div class="toggle-btn" onclick="dropdownFunc();">
+            <div class="toggle-btn" onclick="dropdownFunc();">
                 <span></span>
                 <span></span>
                 <span></span>
-             </div>
-             <div class="logo">
-                 <img src="assets/imagens/TobaccoRebrand.png">
-             </div>
-        <nav class="nav" id="nav">
-            <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="produtos.html">PRODUTOS</a></li>
-                <li><a href="#contato">CONTATO</a></li>
-                <li><a href="#sobre">SOBRE</a></li>     
-            </ul>   
-            <ul class="icons-nav">    
-               <li><ion-icon name="person-outline" size="large"></ion-icon></li>
-               <li><ion-icon name="cart-outline" size="large" ></ion-icon></li>
-           </ul> 
-        </nav> 
-    
-    </div>
+            </div>
+            <div class="logo">
+                <img src="assets/imagens/TobaccoRebrand.png">
+            </div>
+            <nav class="nav" id="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="produtos.html">PRODUTOS</a></li>
+                    <li><a href="#contato">CONTATO</a></li>
+                    <li><a href="#sobre">SOBRE</a></li>
+                </ul>
+                <ul class="icons-nav">
+                    <li><ion-icon name="person-outline" size="large"></ion-icon></li>
+                    <li><ion-icon name="cart-outline" size="large"></ion-icon></li>
+                </ul>
+            </nav>
+
+        </div>
     </header>
     <section id="content1" class="content1">
         <div class="bg-image">
@@ -68,42 +79,41 @@
             <!-- <div class="text-smok"><h2>VENHA NOS VISITAR OU ENTRE EM CONTATO:</h2><br> -->
             <!-- <center><h3><a href="#contato" class="link-contato">CONTATO</a></h3></center>
                 <main class="destaque-prod"></main> -->
-            </div>
-        </section>
-    <main class="products">
+        </div>
+    </section>
+    <main class="products" id="superior">
+        <card-product image="assets/imagens/products/behike/behike01.webp"
+            photo="assets/imagens/products/behike/behike03.webp" title="Behike" price="R$ 250"
+            id="01"
+            onclick="teste(this.id)"></card-product>
+    </main>
+    <main class="products" id="centro-superior">
+        <card-product></card-product>
+        <card-product></card-product>
+
+    </main>
+    <main class="products" id="inferior">
         <card-product></card-product>
         <card-product></card-product>
         <card-product></card-product>
         <card-product></card-product>
-      
-     </main>
-     <main class="products">
+
+    </main>
+    <main class="products" id="centro-inferior">
         <card-product></card-product>
         <card-product></card-product>
-      
-     </main>
-     <main class="products">
-        <card-product></card-product>
-        <card-product></card-product>
-        <card-product></card-product>
-        <card-product></card-product>
-      
-     </main>
-     <main class="products">
-        <card-product></card-product>
-        <card-product></card-product>
-      
-     </main>
-     <main class="products">
+
+    </main>
+    <main class="products" id="footer">
         <card-product></card-product>
         <card-product></card-product>
         <card-product></card-product>
         <card-product></card-product>
-      
-     </main>
+
+    </main>
 
 
-     <footer>
+    <footer>
         <div class="footer">
             <img src="assets/imagens/TOBACCO.png" alt="">
             <!-- <ul class="lista-footer">
@@ -124,4 +134,5 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

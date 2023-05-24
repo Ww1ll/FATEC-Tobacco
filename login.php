@@ -24,18 +24,21 @@ $senha = $_POST['num_senha'];
 $array = array();
 
 $sql = mysql_query("select * from cad_user where email = '$usuario' and senha = '$senha'");
+$sql_id = mysql_query("select id from cad_user where email = '$usuario' and senha = '$senha'");
 
 if (mysql_num_rows($sql) == 1){
-    $sql = mysql_query("select nome, sobrenome from cad_user where email = '$usuario'");
+    $sql = mysql_query("select id, nome, sobrenome from cad_user where email = '$usuario'");
     $linha = mysql_fetch_assoc($sql);      
     $json = json_encode($linha);
     $obj = json_decode($json);
 
     $nome = $obj->nome;    
     $sobrenome = $obj->sobrenome;
+    $user_id = $obj->id;
     
     $_SESSION['usuario_nome'] = $nome;
     $_SESSION['usuario_sobrenome'] = $sobrenome;
+    $_SESSION['user_id'] = $user_id;
     
     if ($nome == "admin" || $nome == "ADMIN") {
         echo "<script>
@@ -48,15 +51,13 @@ if (mysql_num_rows($sql) == 1){
             window.location = 'index.html';
             </script>";
     }
-
     
 }
 else{ 
     echo "<script>
         alert('Usuário não encontrado!');
         window.location = 'login.html';
-        </script>";
-    
+        </script>";    
 }
 
 
