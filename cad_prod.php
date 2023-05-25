@@ -13,10 +13,10 @@ $desc_prod = $_POST['desc_prod'];
 $preco_prod = $_POST['preco_prod'];
 $id_adm = $_SESSION['user_id'];
 
-$sql = mysql_query("select * from cad_prod where id_prod = '$cod_prod'");
+$sql = mysql_query("select * from cad_prod where cod_prod = '$cod_prod'");
 
 if (mysql_num_rows($sql) > 0) {
-    echo "";
+    echo "Produto já cadastrado";
 }else{
     $sql = mysql_query("insert into cad_prod 
     (cod_prod, img_prod, capa_prod, desc_prod, preco_prod, id_resp)

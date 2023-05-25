@@ -43,10 +43,35 @@
                 }
             })
         })
+
+
+        function getProd() {
+            $.ajax({
+                url: "get_prod.php",
+                success: function (data) {
+                    const prod = JSON.parse(data);
+                    console.log(prod); 
+                    
+                    for (let index = 0; index < prod.length; index++) {                        
+                        $('#superior').append(`
+                        <card-product image="${prod[index].img_prod}"
+                            photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
+                            id="${prod[index].cod_prod}"
+                            onclick="teste(this.id)">
+                        </card-product>
+                        `);
+                    }
+
+
+
+                }
+            });
+        }
+        
     </script>
 </head>
 
-<body>
+<body onload="getProd()">
     <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
@@ -82,10 +107,11 @@
         </div>
     </section>
     <main class="products" id="superior">
-        <card-product image="assets/imagens/products/behike/behike01.webp"
+        <!-- <card-product image="assets/imagens/products/behike/behike01.webp"
             photo="assets/imagens/products/behike/behike03.webp" title="Behike" price="R$ 250"
             id="01"
-            onclick="teste(this.id)"></card-product>
+            onclick="teste(this.id)">
+        </card-product> -->
     </main>
     <main class="products" id="centro-superior">
         <card-product></card-product>

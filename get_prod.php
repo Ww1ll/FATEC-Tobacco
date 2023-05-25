@@ -1,7 +1,7 @@
 <?php
 include 'conexao.php';
 
-$sql = mysql_query("select * from cad_prod order by id_prod");
+$sql = mysql_query("select * from cad_prod order by cod_prod");
 
 $array = array();
 
