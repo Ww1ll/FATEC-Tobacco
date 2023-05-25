@@ -62,8 +62,17 @@
             });
         }
 
-        function addCart(id) {
-            alert("ID "+id);
+        function addCart(id) {            
+            $.ajax({
+                type: "POST",
+                url: `addCart.php`,
+                data: {
+                    id_prod: `${id}`
+                },
+                success: function(resposta){
+                    alert(resposta);
+                }
+            })
         }
         
     </script>
@@ -94,9 +103,7 @@
                             <div class="cart-item">
                                 <ion-icon name="cart-outline" size="large"></ion-icon>
                             </div>
-                            <div class="cart-value" id="prod_qtd">
-                                
-                            </div>
+                            <div class="cart-value" id="prod_qtd"></div>
                         </div>
                         
                     </li>
