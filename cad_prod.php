@@ -19,7 +19,7 @@ if (mysql_num_rows($sql) > 0) {
     echo "";
 }else{
     $sql = mysql_query("insert into cad_prod 
-    (id_prod, img_prod, capa_prod, desc_prod, preco_prod, id_resp)
+    (cod_prod, img_prod, capa_prod, desc_prod, preco_prod, id_resp)
     values
     ('$cod_prod','$img_prod','$capa_prod','$desc_prod','$preco_prod','$id_adm')");
     

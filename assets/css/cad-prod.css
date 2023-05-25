@@ -86,3 +86,8 @@ img:hover{
 .sair{
     background-color: #e61b1b;
 }
+
+table{
+    width: 100%;
+    background-color: #e61b1b;
+}

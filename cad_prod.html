@@ -83,6 +83,10 @@
                 <input type="text" name="img_prod" id="img_prod" required>
             </div>
             <div class="linha">
+                <label for="">Capa do Produto:</label>
+                <input type="text" name="capa_prod" id="capa_prod" required>
+            </div>
+            <div class="linha">
                 <label for="">Desc. do produto:</label>
                 <input type="text" name="desc_prod" id="desc_prod" required>
             </div>
@@ -97,14 +101,16 @@
         </form>
     </div>
 
-    <div class="" id="">
-        <table id="tabela-carrinho">
+    <div class="content" id="content">
+        <table id="tabela-carrinho" class="tab-prod">
             <thead>
                 <tr>
                     <th>Cód. Produto</th>
                     <th>Imagem do Prduto</th>
+                    <th>Capa do Prduto</th>
                     <th>Desc. Produto</th>
                     <th>Preço do Produto</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <!-- produto aqui -->
