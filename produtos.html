@@ -23,12 +23,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
         integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        function teste(id) {
-            alert("teste"+id);
-        }
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     </script>
+    
 
     <title>Tobacco | Produtos</title>
     <script>
@@ -57,12 +54,16 @@
                         <card-product image="${prod[index].img_prod}"
                             photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
                             id="${prod[index].cod_prod}"
-                            onclick="teste(this.id)">
+                            onclick="addCart(this.id)">
                         </card-product>
                         `);
                     }
                 }
             });
+        }
+
+        function addCart(id) {
+            alert("ID "+id);
         }
         
     </script>
@@ -88,7 +89,17 @@
                 </ul>
                 <ul class="icons-nav">
                     <li><ion-icon name="person-outline" size="large"></ion-icon></li>
-                    <li><ion-icon name="cart-outline" size="large"></ion-icon><h1 id="cart-items">2</h1></li>
+                    <li>
+                        <div class="cart-container">
+                            <div class="cart-item">
+                                <ion-icon name="cart-outline" size="large"></ion-icon>
+                            </div>
+                            <div class="cart-value" id="prod_qtd">
+                                
+                            </div>
+                        </div>
+                        
+                    </li>
                 </ul>
             </nav>
 
