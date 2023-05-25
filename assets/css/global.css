@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+#cart-items{
+    background-color: red;
+}
+
 body{
     background-color: #f0f0f0;
 }

@@ -30,14 +30,14 @@
                     }
                 });
             });
-        });
-
-        // function preco(moeda) {
-        //     const arredondado = +(moeda.toFixed(2));
-        //     return arredondado;
-        // }
+        }); 
+        
+        function limparElemento(id) {
+            document.getElementById(id).innerHTML="";
+        }
 
         function getProd() {
+            limparElemento("produtos");
             $.ajax({
                 url: "get_prod.php",
                 success: function (data) {
@@ -57,24 +57,9 @@
                             <th>${prod[index].data_cad}</th>
                             <th>${prod[index].id_resp}</th>
                         </tr> 
-                        
-                        <card-product image="${prod[index].img_prod}"
-                                photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
-                                id="${prod[index].cod_prod}"
-                                onclick="">
-                        </card-product>
                         `);
-                        
-                        $('#card-produtos').append(`
-                            <card-product image="${prod[index].img_prod}"
-                                photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
-                                id="${prod[index].cod_prod}"
-                                onclick="">
-                            </card-product>
-                        `);
-
-
                     }
+                    
                 }
             });
         }
