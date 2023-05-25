@@ -27,6 +27,7 @@
     
     <script src="assets/src/components/node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-pf_dom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/src/getCart.js"></script>
     <script>
         function userLogged() {
             $.ajax({
@@ -57,11 +58,12 @@
                     $('header').removeClass('active')
                 }
             })
-        })
+        })        
     </script>
+    <script src="assets/src/getCart.js"></script>
 </head>
 
-<body onload="userLogged()">
+<body onload="userLogged(), getCart()">
     <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
