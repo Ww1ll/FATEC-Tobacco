@@ -22,11 +22,81 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
         integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="assets/src/getCart.js"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
     <title>Carrinho de compras</title>
+    <script>
+        function getCart(id){
+            $.ajax({
+                url: "getCart.php",
+                success: function(resposta){
+
+                    if (resposta <= 0) {
+                        document.getElementById(id).innerHTML="";  
+                        document.getElementById(id).className = "";
+                    }else{
+                        document.getElementById(id).innerHTML=resposta;
+                        document.getElementById(id).className = "cart-value";
+                    }
+                }
+            });
+        }
+
+        function userLogged() {
+            $.ajax({
+                type: "GET",
+                url: "quem.php",
+                success: function(resposta){
+                    if(!resposta){
+                        $("#user").html("Faça Login!");
+                    }else{
+                        $("#user").html("Bem vindo "+resposta);
+                    }
+                }
+            })
+        }
+
+        function getProd() {
+            $.ajax({
+                url: "getCartFinal.php",
+                success: function (data) {
+                    const prod = JSON.parse(data);
+                    console.log(prod); 
+                    
+                    for (let index = 0; index < prod.length; index++) {  
+                                              
+                        $('#corpo').append(`
+                        <tr id="${prod[index].cod_prod}">
+                        <td class="coluna-capa">
+                            <img src="${prod[index].img_prod}" width="200px" height="200px" class="capa">
+                        </td>                
+                        <td> 
+                            <div class="produto-car">
+                                <a href="" class="nome-produto">${prod[index].desc_prod}</a>                                
+                            </div>
+                            <strong class="estoque">Em estoque</strong>
+                            <div>
+                                <label class="presente"><input type="checkbox">Presente</label>
+                            </div>
+                            <a href="" class="remover-carrinho"  onclick="remover()">Tirar do carrinho</a>
+                        </td>
+                        <td colspan="2"><span class="preco-produto">${prod[index].preco_prod}</span></td>
+                        <td>
+                            <div class="valores">
+                                <input type="number" value="${prod[index].qtd_prod}" min="0" max="5">
+                                <label></label>                                
+                            </div>
+                        </td>
+                    </tr>
+                        `);
+                    }                    
+                }
+            });              
+
+        }
+    </script>
+
 </head>
-<body>
+<body onload="userLogged(), getCart('prod_qtd'), getProd()">
     <script>
         $(document).ready(function () {
             $(window).bind('scroll', function () {
@@ -39,7 +109,6 @@
                 }                
             })
         })
-
     </script>
     <header>
         <div class="container">
@@ -59,8 +128,16 @@
                     <li><a href="#sobre">SOBRE</a></li> -->
                 </ul>
                 <ul class="icons-nav">
+                    <div class="user" id="user">
+                        Bem vindo.
+                    </div>
                     <li><ion-icon name="person-outline" size="large"></ion-icon></li>
-                    <li><ion-icon name="cart-outline" size="large"></ion-icon></li>
+                    <div class="cart-container">
+                        <div class="cart-item">
+                            <a href="carrinho.html"><ion-icon name="cart-outline" size="large"></ion-icon></a>
+                        </div>
+                        <div class="" id="prod_qtd"></div>
+                    </div>
                 </ul>
             </nav>
 
@@ -78,8 +155,8 @@
                 </tr>
             </thead>
             <!-- produto aqui -->
-            <tbody>
-                    <tr id="item01">
+            <tbody id="corpo">
+                    <!-- <tr id="item01">
                         <td class="coluna-capa">
                             <img src="assets/imagens/products/RapeXingu/001(2).png" width="200px" height="200px" class="capa">
                         </td>
@@ -99,7 +176,7 @@
                         <td>
                             <input type="number" value="1" min="0" max="5">
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
                 <tfoot>
                     <tr>
@@ -108,8 +185,8 @@
                         <!-- <td>&nbsp;</td> -->
                     </tr>
                 </tfoot>
-            </table>
-            <div class="buttons">
+        </table>
+        <div class="buttons">
             <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br>
         </div>
     </main>

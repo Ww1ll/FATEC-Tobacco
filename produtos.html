@@ -25,6 +25,7 @@
         integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Tobacco | Produtos</title>
     <script>
         $(document).ready(function () {
@@ -60,6 +61,20 @@
             });
         }
 
+        function userLogged() {
+            $.ajax({
+                type: "GET",
+                url: "quem.php",
+                success: function(resposta){
+                    if(!resposta){
+                        $("#user").html("Faça Login.");
+                    }else{
+                        $("#user").html("Bem vindo "+resposta);
+                    }
+                }
+            })
+        }
+
         function addCart(id) {            
             $.ajax({
                 type: "POST",
@@ -92,7 +107,7 @@
     </script>
 </head>
 
-<body onload="getProd(), getCart('prod_qtd')">
+<body onload="getProd(), getCart('prod_qtd'), userLogged()">
     <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
@@ -111,11 +126,14 @@
                     <li><a href="#sobre">SOBRE</a></li> -->
                 </ul>
                 <ul class="icons-nav">
-                    <li><ion-icon name="person-outline" size="large"></ion-icon></li>
+                    <div class="user" id="user">
+                        Bem vindo.
+                    </div>
+                    <a href="login.html"><li><ion-icon name="person-outline" size="large"></ion-icon></li></a>
                     <li>
                         <div class="cart-container">
                             <div class="cart-item">
-                                <ion-icon name="cart-outline" size="large"></ion-icon>
+                                <a href="carrinho.html"><ion-icon name="cart-outline" size="large"></ion-icon></a>
                             </div>
                             <div class="" id="prod_qtd"></div>
                         </div>

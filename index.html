@@ -58,12 +58,61 @@
                     $('header').removeClass('active')
                 }
             })
-        })        
+        }) 
+        
+        function addCart(id) {            
+            $.ajax({
+                type: "POST",
+                url: `addCart.php`,
+                data: {
+                    id_prod: `${id}`
+                },
+                success: function(resposta){
+                    alert(resposta);                    
+                }
+            })            
+        }
+
+        function getCart(id){
+            $.ajax({
+                url: "getCart.php",
+                success: function(resposta){
+
+                    if (resposta <= 0) {
+                        document.getElementById(id).innerHTML="";  
+                        document.getElementById(id).className = "";
+                    }else{
+                        document.getElementById(id).innerHTML=resposta;
+                        document.getElementById(id).className = "cart-value";
+                    }
+                }
+            });
+        }
+
+        function getProd() {
+            $.ajax({
+                url: "get_prod.php",
+                success: function (data) {
+                    const prod = JSON.parse(data);
+                    console.log(prod); 
+                    
+                    for (let index = 0; index < prod.length; index++) {                        
+                        $('#products').append(`
+                        <card-product image="${prod[index].img_prod}"
+                            photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
+                            id="${prod[index].cod_prod}"
+                            onclick="addCart(this.id), getCart('prod_qtd')">
+                        </card-product>
+                        `);
+                    }                    
+                }
+            });
+        }
     </script>
     <script src="assets/src/getCart.js"></script>
 </head>
 
-<body onload="userLogged(), getCart()">
+<body onload="userLogged(), getCart('prod_qtd'), getProd()">
     <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
@@ -83,10 +132,15 @@
                 </ul>
                 <ul class="icons-nav">
                     <div class="user" id="user">
-                        Bem vindo ...
+                        Bem vindo.
                     </div>
                     <a href="login.html"><li><ion-icon name="person-outline" size="large"></ion-icon></li></a>
-                    <a href="carrinho.html"><li><ion-icon name="cart-outline" size="large"></ion-icon></li></a>
+                    <div class="cart-container">
+                        <div class="cart-item">
+                            <a href="carrinho.html"><ion-icon name="cart-outline" size="large"></ion-icon></a>
+                        </div>
+                        <div class="" id="prod_qtd"></div>
+                    </div>
                 </ul>
             </nav>
 
@@ -130,35 +184,7 @@
         </marquee>
 
     </div> -->
-    <main class="products">
-        <card-product 
-        image="assets/imagens/products/behike/001cohiba(4).png"
-        photo="assets/imagens/products/behike/behike03.png"
-        title="Conjunto behike" 
-        price="R$300" 
-        ></card-product>
-
-        <card-product
-        image="assets/imagens/products/piramides/001978(4).png"
-        photo="assets/imagens/products/piramides/charuto_cohiba_piramides_02.png"
-        title="Conjunto behike" 
-        price="R$4860"
-        ></card-product>
-
-        <card-product
-        image="assets/imagens/products/sigloI/00e5556651 (4).png"
-        photo="assets/imagens/products/sigloI/siglo02.png"
-        title="Conjunto behike" 
-        price="R$4860"
-        ></card-product>
-
-        <a href="assets/produtos/produto.html"><card-product
-        image="assets/imagens/products/RapeXingu/001(2).png"
-        photo="assets/imagens/products/RapeXingu/003.png"
-        title="Rapé Xingu" 
-        price="R$50"
-        ></card-product></a>        
-
+    <main class="products" id="products">
     </main>
     <main class="products">
         <div class="card">
