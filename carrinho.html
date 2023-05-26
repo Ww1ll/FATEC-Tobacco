@@ -131,6 +131,16 @@
             //$('#totalDaCompra').value              
 
         }
+    
+        function cleanCart() {            
+            $.ajax({
+                url: "cleanCart.php",
+                success: function(resposta){                    
+                    getCart();
+                }
+            });
+        }
+    
     </script>
 
 </head>
@@ -228,6 +238,7 @@
         </table>
         <div class="buttons">
             <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br>
+            <button name="btnLimpaCarrinho" onclick="cleanCart()">Esvaziar Carrinho</button>            
         </div>
     </main>
     <footer>

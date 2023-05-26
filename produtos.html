@@ -53,7 +53,7 @@
                         <card-product image="${prod[index].img_prod}"
                             photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
                             id="${prod[index].cod_prod}"
-                            onclick="addCart(this.id), getCart('prod_qtd')">
+                            onclick="addCart(this.id)">
                         </card-product>
                         `);
                     }                    
@@ -83,7 +83,8 @@
                     id_prod: `${id}`
                 },
                 success: function(resposta){
-                    alert(resposta);                    
+                    alert(resposta);
+                    getCart("prod_qtd");                    
                 }
             })            
         }
