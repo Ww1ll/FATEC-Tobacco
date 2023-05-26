@@ -43,13 +43,13 @@
             });
         }
 
-        function userLogged() {
+        function userLogged(event) {            
             $.ajax({
                 type: "GET",
                 url: "quem.php",
                 success: function(resposta){
                     if(!resposta){
-                        $("#user").html("Faça Login!");
+                        
                     }else{
                         $("#user").html("Bem vindo "+resposta);
                         $('#user').append(`

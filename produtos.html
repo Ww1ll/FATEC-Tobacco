@@ -67,7 +67,7 @@
                 url: "quem.php",
                 success: function(resposta){
                     if(!resposta){
-                        $("#user").html("Faça Login.");
+                        $("#user").html("Faça Login ou <a href='cadastro.html'>cadastre-se.</a>");
                     }else{
                         $("#user").html("Bem vindo "+resposta);
                         $('#user').append(`
