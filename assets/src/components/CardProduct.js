@@ -47,7 +47,7 @@ class CardProduct extends HTMLElement{
 
         const prodPrice = document.createElement("div");
         prodPrice.setAttribute("class", "price");
-        prodPrice.textContent = this.getAttribute("price") || "R$200";
+        prodPrice.textContent = this.getAttribute("price") || "Valor do produto";
         
         subInfo.appendChild(prodPrice);
 
