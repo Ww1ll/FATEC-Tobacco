@@ -31,6 +31,8 @@
                 success: function(resposta){
 
                     if (resposta <= 0) {
+                        alert("Carrinho Vazio!");
+                        window.location="produtos.html";
                         document.getElementById(id).innerHTML="";  
                         document.getElementById(id).className = "";
                     }else{
@@ -54,16 +56,47 @@
                 }
             })
         }
+        
+        function tiraDoCarrinho(codProd, acao) {
+            $.ajax({
+                url: `tirarDoCarrinho.php`,
+                method: "POST",
+                data: {
+                    codProd: codProd,
+                    acao: acao
+                },
+                success: function(resposta){
+                    alert(resposta);
+                    var elemento = document.getElementById("corpo");
+                    elemento.innerHTML="";
+                    getProd();
+                    getCart('prod_qtd');
+                }
+            });
+        }
 
         function getProd() {
+            $('#corpo').innerHTML="";
             $.ajax({
                 url: "getCartFinal.php",
-                success: function (data) {
+                success: function (data) {                   
+
                     const prod = JSON.parse(data);
-                    console.log(prod); 
-                    
-                    for (let index = 0; index < prod.length; index++) {  
-                                              
+
+                    var valorSpan = document.getElementById("totalGeralCompra");
+                    let soma = 0;                    
+
+                    for (let index = 0; index < prod.length; index++) {                                                 
+                        
+                        let total = prod[index].preco_prod * prod[index].qtd_prod;                          
+
+                        soma += total;
+                        
+                        const totalReal = total.toLocaleString("pt-BR", {
+                            style: "currency",
+                            currency: "BRL",
+                        });                        
+
                         $('#corpo').append(`
                         <tr id="${prod[index].cod_prod}">
                         <td class="coluna-capa">
@@ -76,27 +109,32 @@
                             <strong class="estoque">Em estoque</strong>
                             <div>
                                 <label class="presente"><input type="checkbox">Presente</label>
-                            </div>
-                            <a href="" class="remover-carrinho"  onclick="remover()">Tirar do carrinho</a>
+                            </div>                            
                         </td>
-                        <td colspan="2"><span class="preco-produto">${prod[index].preco_prod}</span></td>
+                        <td colspan="2"><span class="preco-produto">${"R$ "+ prod[index].preco_prod}</span></td>
                         <td>
-                            <div class="valores">
-                                <input type="number" value="${prod[index].qtd_prod}" min="0" max="5">
-                                <label></label>                                
-                            </div>
+                            <input type="button" class="delProd" onclick="tiraDoCarrinho('${prod[index].cod_prod}','del')" value="-">
+                            &nbsp;
+                            <label>${prod[index].qtd_prod}</label>
+                            &nbsp;
+                            <input type="button" class="addProd" onclick="tiraDoCarrinho('${prod[index].cod_prod}','inc')" value="+">
                         </td>
+                        <td colspan="2"><span>${totalReal}</span></td>
+
                     </tr>
                         `);
-                    }                    
+                    }
+                    
+                    valorSpan.innerHTML = "R$ " + soma;
                 }
-            });              
+            });
+            //$('#totalDaCompra').value              
 
         }
     </script>
 
 </head>
-<body onload="userLogged(), getCart('prod_qtd'), getProd()">
+<body onload="userLogged(), getCart('prod_qtd'), getProd()">    
     <script>
         $(document).ready(function () {
             $(window).bind('scroll', function () {
@@ -110,7 +148,7 @@
             })
         })
     </script>
-    <header>
+    <header>        
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
                 <span></span>
@@ -152,6 +190,7 @@
                     <th colspan="2"> Itens para comprar</th>
                     <th colspan="2" class="coluna-pequena">Preço</th>
                     <th class="coluna-pequena">Quantidade</th>
+                    <th class="coluna-pequena">Total Individual</th>
                 </tr>
             </thead>
             <!-- produto aqui -->
@@ -180,8 +219,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="texto-total">Total da compra</td>
-                        <td colspan="2"><span class="total">R$ 880.00</span></td>
+                        <td></td>
+                        <td colspan="2" class="texto-total">Total da compra</td>
+                        <td colspan="3"><span class="total" id="totalGeralCompra">R$ 880.00</span></td>
                         <!-- <td>&nbsp;</td> -->
                     </tr>
                 </tfoot>
