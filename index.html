@@ -36,6 +36,7 @@
                 success: function(resposta){
                     if(!resposta){
                         $("#user").html("Faça Login ou <a href='cadastro.html'>cadastre-se.</a>");
+                        $('#cartVerify').html("");
                     }else{
                         $("#user").html("Bem vindo "+resposta);
                         $('#user').append(`
@@ -177,8 +178,10 @@
                             Bem vindo.
                         </div>                        
                     </div>
-                    <a href="login.html"><li><ion-icon name="person-outline" size="large"></ion-icon></li></a>
-                    <div class="cart-container">
+                    <div id="loginVerify">                        
+                        <a href="login.html"><li><ion-icon name="person-outline" size="large"></ion-icon></li></a>
+                    </div>
+                    <div class="cart-container" id="cartVerify">
                         <div class="cart-item">
                             <a href="carrinho.html"><ion-icon name="cart-outline" size="large"></ion-icon></a>
                         </div>
