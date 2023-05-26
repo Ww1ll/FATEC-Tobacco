@@ -70,6 +70,11 @@
                         $("#user").html("Faça Login.");
                     }else{
                         $("#user").html("Bem vindo "+resposta);
+                        $('#user').append(`
+                        <div>
+                            <a href="" onclick="sair(event)">Sair</a>
+                        </div>
+                        `);                        
                     }
                 }
             })
@@ -103,6 +108,23 @@
                     }
                 }
             });
+        }
+
+        function sair(event) {
+            
+            var sair = confirm("Deseja realmente sair?");
+            
+            if (sair) {                
+                $.ajax({
+                    type: "POST",
+                    url: "sair.php?sair=sim",
+                    success: function(resposta) {
+                        alert(resposta);
+                        window.location="index.html";                        
+                    }
+                });
+            }
+            event.preventDefault();
         }
         
     </script>
