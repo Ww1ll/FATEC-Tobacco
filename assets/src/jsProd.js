@@ -2,8 +2,8 @@ function getProd() {
     $.ajax({
         url: "get_prod.php",
         success: function (data) {
-            const prod = JSON.parse(data);
-            console.log(prod); 
+            
+            const prod = JSON.parse(data);            
             
             for (let index = 0; index < prod.length; index++) {                        
                 $('#superior').append(`

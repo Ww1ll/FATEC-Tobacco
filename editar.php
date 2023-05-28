@@ -34,7 +34,7 @@ if (isset($_GET['editar'])) {
 </head>
 <body>
     <form action="atualizar.php" class="form" method="post">
-        <a href="home.html"><img src="imagens/tobacoII.png" width="70px" class="logo-form"></a>
+        <a href="home.html"><img src="assets/imagens/tobacoII.png" width="70px" class="logo-form"></a>
         <center><div class="title">Atualização de Cadastro</div></center>
 
         <input type="hidden" name="txt_id" value="<?php echo  $linha["id"] ?>">

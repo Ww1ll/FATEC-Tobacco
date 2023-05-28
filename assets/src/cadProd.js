@@ -47,6 +47,9 @@ function cadProd(e) {
             } else {
                 alert(data);
                 $('#cad-prod')[0].reset();
+                document.getElementById("acao").value = "salvar";
+                document.getElementById("btnEnviar").value = "Enviar";
+                document.getElementById("btnLimpar").value = "Limpar";
                 getProd();
             }
         }
@@ -68,7 +71,20 @@ function getUser() {
 }
 
 function delProd(id) {
-    alert("Deletar " + id);
+
+    var confirmar = confirm("Deseja continuar com a exclusão?");
+
+    if (confirmar){
+        $.ajax({
+            url: "delProd.php",
+            method: "POST",
+            data: {id: id},
+            success: function (resposta) {
+                alert(resposta);
+                getProd();
+            }
+        });
+    }
 }
 
 function editProd(id) {
@@ -83,22 +99,36 @@ function editProd(id) {
             console.log(dado);
 
             document.getElementById("cod_prod").value = dado[0].cod_prod;
+            document.getElementById("cod_prod").readOnly = true;
+            document.getElementById("preco_prod").value = dado[0].preco_prod;
             document.getElementById("img_prod").value = dado[0].img_prod;
             document.getElementById("capa_prod").value = dado[0].capa_prod;
             document.getElementById("desc_prod").value = dado[0].desc_prod;
             document.getElementById("preco_prod").value = dado[0].preco_prod;
-            document.getElementById("btnEnviar").value = "Salvar";
+            document.getElementById("acao").value = "atualizar";
+            document.getElementById("btnEnviar").value = "Atualizar";
             document.getElementById("btnLimpar").value = "Cancelar";
         }
     });
 }
 
-// function salvar(event) {
-//     event.preventDefault();
-//     const opcao = event.target.value;
-//     if (opcao == "Salvar") {
-//         alert("Salvar");
-//     } else if (opcao == "Enviar") {
-        
-//     }
-// }
+function cancelUpdate() {
+    document.getElementById("cod_prod").readOnly = false;
+    document.getElementById("btnLimpar").value = "Limpar";
+    document.getElementById("btnEnviar").value = "Salvar";
+}
+
+function sair() {
+    var sair = confirm("Deseja realmente sair?");
+    
+    if (sair) {                
+        $.ajax({
+            type: "POST",
+            url: "sair.php?sair=sim",
+            success: function(resposta) {
+                alert(resposta);
+                window.location="listar.html";                        
+            }
+        });
+    }
+}
