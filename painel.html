@@ -5,49 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="assets/css/listagens.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script>
-        function getUser() {
-            $.ajax({
-                type: "GET",
-                url: "quem.php",
-                success: function(resposta){ 
-                    if (!resposta) {
-                        window.location = "login.html"
-                    }else{
-                        $("#user_log").html("Usuário logado: "+resposta);
-                    }                   
-                }
-            });
-        }
-
-        function sair() {
-            var sair = confirm("Deseja realmente sair?");
-            
-            if (sair) {                
-                $.ajax({
-                    type: "POST",
-                    url: "sair.php?sair=sim",
-                    success: function(resposta) {
-                        alert(resposta);
-                        window.location="listar.html";                        
-                    }
-                });
-            }
-        }
-    </script>
-
-    <title>Painel do Administrados</title>
+    <script src="assets/src/jsPanel.js"></script>
+    <title>Painel do Administrador</title>
 </head>
 
 <body onload="getUser()">
-    <div class="header">       
+    <div class="header">
         <div id="user_log"></div>
-        <div class="botoes" id="botoes">            
+        <div class="botoes" id="botoes">
             <input type="button" value="SAIR" class="btn sair" onclick="sair()">
         </div>
     </div>
