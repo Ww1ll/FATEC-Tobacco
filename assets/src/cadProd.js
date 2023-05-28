@@ -1,14 +1,14 @@
 function limparElemento(id) {
-    document.getElementById(id).innerHTML="";
-}        
+    document.getElementById(id).innerHTML = "";
+}
 
 function getProd() {
     limparElemento("produtos");
     $.ajax({
         url: "get_prod.php",
         success: function (data) {
-            
-            const prod = JSON.parse(data);                    
+
+            const prod = JSON.parse(data);
 
             for (let index = 0; index < prod.length; index++) {
                 var valor = prod[index].preco_prod;
@@ -29,7 +29,26 @@ function getProd() {
                 </tr> 
                 `);
             }
-            
+
+        }
+    });
+}
+
+function cadProd(e) {
+    e.preventDefault();
+    var dados = $(e.target).serialize();
+    $.ajax({
+        url: "cad_prod.php",
+        type: "POST",
+        data: dados,
+        success: function (data) {
+            if (data == "") {
+                alert('Produto Já Cadastrado!');
+            } else {
+                alert(data);
+                $('#cad-prod')[0].reset();
+                getProd();
+            }
         }
     });
 }
@@ -38,20 +57,48 @@ function getUser() {
     $.ajax({
         type: "GET",
         url: "quem.php",
-        success: function(resposta){ 
+        success: function (resposta) {
             if (!resposta) {
                 window.location = "login.html"
-            }else{
-                $("#user_log").html("Usuário logado: "+resposta);
-            }                   
+            } else {
+                $("#user_log").html("Usuário logado: " + resposta);
+            }
         }
     });
 }
 
 function delProd(id) {
-    alert("Deletar "+id);
+    alert("Deletar " + id);
 }
 
 function editProd(id) {
-    alert("Editar "+id);
+    $.ajax({
+        method: "POST",
+        url: `editProd.php`,
+        data: {
+            idCli: `${id}`
+        },
+        success: function (resposta) {
+            const dado = JSON.parse(resposta);
+            console.log(dado);
+
+            document.getElementById("cod_prod").value = dado[0].cod_prod;
+            document.getElementById("img_prod").value = dado[0].img_prod;
+            document.getElementById("capa_prod").value = dado[0].capa_prod;
+            document.getElementById("desc_prod").value = dado[0].desc_prod;
+            document.getElementById("preco_prod").value = dado[0].preco_prod;
+            document.getElementById("btnEnviar").value = "Salvar";
+            document.getElementById("btnLimpar").value = "Cancelar";
+        }
+    });
 }
+
+// function salvar(event) {
+//     event.preventDefault();
+//     const opcao = event.target.value;
+//     if (opcao == "Salvar") {
+//         alert("Salvar");
+//     } else if (opcao == "Enviar") {
+        
+//     }
+// }

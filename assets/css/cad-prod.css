@@ -71,6 +71,14 @@ thead{
     font-weight: bolder;
 }
 
+.voltar{
+    background-color: #51d647;
+}
+
+.sair{
+    background-color: #e61b1b;
+}
+
 .btnDel{
     width: 60px;
     height: 60px;
@@ -89,13 +97,6 @@ thead{
     background-color: #907ded;
 }
 
-.voltar{
-    background-color: #51d647;
-}
-
-.sair{
-    background-color: #e61b1b;
-}
 
 table{
     width: 100%;    

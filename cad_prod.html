@@ -43,8 +43,8 @@
         </div>
         <div class="item" id="user_log"></div>
         <div class="item" id="botoes">
+            <a href="painel.html"><input type="button" value="Voltar" class="btn voltar" on></a>
             <input type="button" value="SAIR" class="btn sair" onclick="sair()">
-            <input type="button" value="VOLTAR" class="btn sair" onclick="sair()">
         </div>
     </div>
 
@@ -70,9 +70,13 @@
                 <label for="">Preço do produto:</label>
                 <input type="number" min="1" step="0.01" name="preco_prod" id="preco_prod" required>
             </div>
-            <div class="botoes">
-                <input type="submit" value="ENVIAR">
-                <input type="reset" value="LIMPAR" name="" id="">
+            <div class="botoes" id="botoes"> 
+                <div class="btn1">
+                    <input type="submit" id="btnEnviar" value="Enviar">
+                </div>
+                <div class="btn2">                    
+                    <input type="reset" id="btnLimpar" value="Limpar">
+                </div>
             </div>
         </form>
     </div>
