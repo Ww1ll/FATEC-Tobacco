@@ -3,17 +3,16 @@ function userLogged() {
         type: "GET",
         url: "quem.php",
         success: function(resposta){
-            if(!resposta){
-                $("#user").html("Faça Login ou <a href='cadastro.html'>cadastre-se.</a>");
-                $('#cartVerify').html("");
-            }else{
-                $("#user").html("Bem vindo "+resposta);
+            if(resposta){
+                $("#user").html(`<div class='loger'>${resposta}</div>`);
                 $('#user').append(`
                 <div>
                     <a href="" onclick="sair(event)">Sair</a>
                 </div>
                 `);
-            }
+                // $("#user").html("<div class='loger'>Faça Login ou </div><a href='cadastro.html'>cadastre-se.</a>");
+                // $('#cartVerify').html("");
+            }            
         }
     })
 }

@@ -11,6 +11,10 @@
     display: flex;    
 }
 
+.loger{
+    color: black;
+}
+
 .cart-value{
     background-color: red;
     height: fit-content;    
@@ -119,7 +123,7 @@ ion-icon:hover{
 .nav-links li a:hover {color: #C9A175;} 
 
 #user{
-    color: #2A553E;
+    color: #2A553E;    
 }
 
 @media (max-width: 992px) {
