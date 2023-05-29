@@ -59,7 +59,8 @@ function getProd() {
                 <card-product image="${prod[index].img_prod}"
                     photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
                     id="${prod[index].cod_prod}"
-                    onclick="addCart(this.id)">
+                    onclick="addCart(this.id)"                    
+                    >
                 </card-product>
                 `);
             }                    
@@ -78,6 +79,24 @@ function getProd() {
                     photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
                     id="${prod[index].cod_prod}"
                     onclick="addCart(this.id), getCart('prod_qtd')">
+                </card-product>
+                `);
+            }                    
+        }
+    });
+
+    $.ajax({
+        url: "get_prod.php",
+        success: function (data) {
+            const prod = JSON.parse(data);
+            console.log(prod); 
+            
+            for (let index = 0; index < prod.length; index++) {                        
+                $('#products_down').append(`
+                <card-product image="${prod[index].img_prod}"
+                    photo="${prod[index].capa_prod}" title="${prod[index].desc_prod}" price="R$ ${prod[index].preco_prod}"
+                    id="${prod[index].cod_prod}"
+                    onclick="addCart(this.id)">
                 </card-product>
                 `);
             }                    
