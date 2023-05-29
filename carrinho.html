@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,151 +23,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
         integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="assets/src/jsCart.js"></script>
+
     <title>Carrinho de compras</title>
-    <script>
-        function getCart(id){
-            $.ajax({
-                url: "getCart.php",
-                success: function(resposta){
-
-                    if (resposta <= 0) {
-                        alert("Carrinho Vazio!");
-                        window.location="produtos.html";
-                        document.getElementById(id).innerHTML="";  
-                        document.getElementById(id).className = "";
-                    }else{
-                        document.getElementById(id).innerHTML=resposta;
-                        document.getElementById(id).className = "cart-value";
-                    }
-                }
-            });
-        }
-
-        function userLogged(event) {            
-            $.ajax({
-                type: "GET",
-                url: "quem.php",
-                success: function(resposta){
-                    if(!resposta){
-                        
-                    }else{
-                        $("#user").html("Bem vindo "+resposta);
-                        $('#user').append(`
-                        <div>
-                            <a href="" onclick="sair(event)">Sair</a>
-                        </div>
-                        `);
-                    }
-                }
-            })
-        }
-
-        function sair(event) {
-            
-            var sair = confirm("Deseja realmente sair?");
-            
-            if (sair) {                
-                $.ajax({
-                    type: "POST",
-                    url: "sair.php?sair=sim",
-                    success: function(resposta) {
-                        alert(resposta);
-                        window.location="index.html";                        
-                    }
-                });
-            }
-            event.preventDefault();
-        }
-        
-        function tiraDoCarrinho(codProd, acao) {
-            $.ajax({
-                url: `tirarDoCarrinho.php`,
-                method: "POST",
-                data: {
-                    codProd: codProd,
-                    acao: acao
-                },
-                success: function(resposta){
-                    alert(resposta);
-                    var elemento = document.getElementById("corpo");
-                    elemento.innerHTML="";
-                    getProd();
-                    getCart('prod_qtd');
-                }
-            });
-        }
-
-        function getProd() {
-            $('#corpo').innerHTML="";
-            $.ajax({
-                url: "getCartFinal.php",
-                success: function (data) {                   
-
-                    const prod = JSON.parse(data);
-
-                    var valorSpan = document.getElementById("totalGeralCompra");
-                    let soma = 0;                    
-
-                    for (let index = 0; index < prod.length; index++) {                                                 
-                        
-                        let total = prod[index].preco_prod * prod[index].qtd_prod;                          
-
-                        soma += total;
-                        
-                        const totalReal = total.toLocaleString("pt-BR", {
-                            style: "currency",
-                            currency: "BRL",
-                        });                        
-
-                        $('#corpo').append(`
-                        <tr id="${prod[index].cod_prod}">
-                        <td class="coluna-capa">
-                            <img src="${prod[index].img_prod}" width="200px" height="200px" class="capa">
-                        </td>                
-                        <td> 
-                            <div class="produto-car">
-                                <a href="" class="nome-produto">${prod[index].desc_prod}</a>                                
-                            </div>
-                            <strong class="estoque">Em estoque</strong>
-                            <div>
-                                <label class="presente"><input type="checkbox">Presente</label>
-                            </div>                            
-                        </td>
-                        <td colspan="2"><span class="preco-produto">${"R$ "+ prod[index].preco_prod}</span></td>
-                        <td>
-                            <input type="button" class="delProd" onclick="tiraDoCarrinho('${prod[index].cod_prod}','del')" value="-">
-                            &nbsp;
-                            <label>${prod[index].qtd_prod}</label>
-                            &nbsp;
-                            <input type="button" class="addProd" onclick="tiraDoCarrinho('${prod[index].cod_prod}','inc')" value="+">
-                        </td>
-                        <td colspan="2"><span>${totalReal}</span></td>
-
-                    </tr>
-                        `);
-                    }
-                    
-                    valorSpan.innerHTML = "R$ " + soma;
-                }
-            });
-            //$('#totalDaCompra').value              
-
-        }
-    
-        function cleanCart() {            
-            $.ajax({
-                url: "cleanCart.php",
-                success: function(resposta){                    
-                    getCart();
-                }
-            });
-        }
-    
-    </script>
-
 </head>
-<body onload="userLogged(), getCart('prod_qtd'), getProd()">    
+
+<body onload="userLogged(), getCart('prod_qtd'), getProd()">
     <script>
         $(document).ready(function () {
             $(window).bind('scroll', function () {
@@ -176,11 +40,11 @@
                     $('header').addClass('active')
                 } else {
                     $('header').removeClass('active')
-                }                
+                }
             })
         })
     </script>
-    <header>        
+    <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
                 <span></span>
@@ -188,7 +52,7 @@
                 <span></span>
             </div>
             <div class="logo">
-               <a href="index.html"><img src="assets/imagens/TobaccoRebrand.png"></a> 
+                <a href="index.html"><img src="assets/imagens/TobaccoRebrand.png"></a>
             </div>
             <nav class="nav" id="nav">
                 <ul class="nav-links">
@@ -213,7 +77,7 @@
 
         </div>
     </header>
-    
+
     <main class="carrinho-container">
         <h2>Carrinho de compras</h2>
         <table id="tabela-carrinho">
@@ -227,7 +91,7 @@
             </thead>
             <!-- produto aqui -->
             <tbody id="corpo">
-                    <!-- <tr id="item01">
+                <!-- <tr id="item01">
                         <td class="coluna-capa">
                             <img src="assets/imagens/products/RapeXingu/001(2).png" width="200px" height="200px" class="capa">
                         </td>
@@ -248,19 +112,20 @@
                             <input type="number" value="1" min="0" max="5">
                         </td>
                     </tr> -->
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td></td>
-                        <td colspan="2" class="texto-total">Total da compra</td>
-                        <td colspan="3"><span class="total" id="totalGeralCompra">R$ 880.00</span></td>
-                        <!-- <td>&nbsp;</td> -->
-                    </tr>
-                </tfoot>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td colspan="2" class="texto-total">Total da compra</td>
+                    <td colspan="3"><span class="total" id="totalGeralCompra">R$ 880.00</span></td>
+                    <!-- <td>&nbsp;</td> -->
+                </tr>
+            </tfoot>
         </table>
         <div class="buttons">
-            <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br>
-            <button name="btnLimpaCarrinho" onclick="cleanCart()">Esvaziar Carrinho</button>            
+            <button id="btnMakeOrder" name="nomeBtn" onclick="makeOrder()">Realizar Pedido</button>
+            <!-- <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br> -->
+            <button name="btnLimpaCarrinho" onclick="cleanCart()">Esvaziar Carrinho</button>
         </div>
     </main>
     <footer>
@@ -268,7 +133,7 @@
             <img src="assets/imagens/TOBACCO.png" alt="">
         </div>
     </footer>
-    
+
     <script src="assets/src/components/CardProduct.js"></script>
     <script src="assets/src/dropdownFunc.js"></script>
     <!-- Materialize -->
@@ -279,4 +144,5 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
