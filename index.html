@@ -37,16 +37,14 @@
                 type: "GET",
                 url: "quem.php",
                 success: function(resposta){
-                    if(!resposta){
-                        $("#user").html("Faça Login ou <a href='cadastro.html'>cadastre-se.</a>");
-                        $('#cartVerify').html("");
-                    }else{
+                    if(resposta){
                         $("#user").html("Bem vindo "+resposta);
                         $('#user').append(`
                         <div>
                             <a href="" onclick="sair(event)">Sair</a>
                         </div>
-                        `);
+                        `);                       
+                    }
                     }
                 }
             })
@@ -94,7 +92,8 @@
                 <ul class="icons-nav">
                     <div class="user" id="user">
                         <div>
-                            Bem vindo.
+                            <div class="log">Faça login ou </div>
+                            <a href='cadastro.html'>cadastre-se.</a>
                         </div>                        
                     </div>
                     <div id="loginVerify">                        
