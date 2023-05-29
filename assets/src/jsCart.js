@@ -138,12 +138,12 @@ function cleanCart() {
     });    
 }
 
-function makeOrder(){
+function makeOrder(){    
     $.ajax({
         url: "makeOrder.php",                
-        success: function(resposta){
-            const order = JSON.parse(resposta);
-            console.log(order);
+        success: function(resposta){            
+            alert(resposta);
+            window.location = "produtos.html";
         }                
     });
 }
