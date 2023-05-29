@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/cad-prod.css">
+    <link rel="stylesheet" href="assets/css/cad-prod.css">    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="assets/src/cadProd.js"></script>
+   
     <script>
         $(document).ready(function () {
             $('#cad-prod').submit(function (e) {
@@ -29,45 +31,19 @@
                     }
                 });
             });
-        });
-
-        // function preco(moeda) {
-        //     const arredondado = +(moeda.toFixed(2));
-        //     return arredondado;
-        // }
-
-        function getProd() {
-            var array = $.ajax({
-                url: "get_prod.php",
-                success: function (data) {
-                    const prod = JSON.parse(data);
-                    console.log(prod);
-
-                    for (let index = 0; index < prod.length; index++) {
-                        var valor = prod[index].preco_prod;
-
-                        $('#produtos').append(`
-                        <tr>
-                            <th>${prod[index].id_prod}</th>
-                            <th><img src="${prod[index].img_prod}" alt=""></th>
-                            <th>${prod[index].desc_prod}</th>
-                            <th>${valor}</th>
-                        </tr>                        
-                        `);
-
-
-                    }
-                }
-            });
-        }
+        });        
     </script>
     <title>Cadastro de Produtos</title>
 </head>
 
-<body onload="getProd()">
+<body onload="getProd(), getUser()">    
     <div class="header">
-        <div id="user_log"></div>
-        <div class="botoes" id="botoes">
+        <div class="item">
+            <h2>Cadastro de Produtos</h2>
+        </div>
+        <div class="item" id="user_log"></div>
+        <div class="item" id="botoes">
+            <a href="painel.html"><input type="button" value="Voltar" class="btn voltar" on></a>
             <input type="button" value="SAIR" class="btn sair" onclick="sair()">
         </div>
     </div>
@@ -83,6 +59,10 @@
                 <input type="text" name="img_prod" id="img_prod" required>
             </div>
             <div class="linha">
+                <label for="">Capa do Produto:</label>
+                <input type="text" name="capa_prod" id="capa_prod" required>
+            </div>
+            <div class="linha">
                 <label for="">Desc. do produto:</label>
                 <input type="text" name="desc_prod" id="desc_prod" required>
             </div>
@@ -90,24 +70,30 @@
                 <label for="">Preço do produto:</label>
                 <input type="number" min="1" step="0.01" name="preco_prod" id="preco_prod" required>
             </div>
-            <div class="botoes">
-                <input type="submit" value="ENVIAR">
-                <input type="reset" value="LIMPAR" name="" id="">
+            <div class="linha">
+                <input type="hidden" name="acao" id="acao" value="salvar">
+            </div>
+            <div class="botoes" id="botoes"> 
+                <input type="submit" id="btnEnviar" value="Enviar">
+                <input type="reset" id="btnLimpar" onclick="cancelUpdate()" value="Limpar">                
             </div>
         </form>
     </div>
 
-    <div class="" id="">
-        <table id="tabela-carrinho">
+    <div class="content" id="content">
+        <table id="tabela-carrinho" class="tab-prod">
             <thead>
                 <tr>
-                    <th>Cód. Produto</th>
-                    <th>Imagem do Prduto</th>
-                    <th>Desc. Produto</th>
-                    <th>Preço do Produto</th>
+                    <th>CÓD. PRODUTO</th>
+                    <th>IMAGEM DO PRODUTO</th>
+                    <th>CAPA DO PRODUTO</th>
+                    <th>DESC. PRODUTO</th>
+                    <th>PREÇO DO PRODUTO</th>
+                    <th>DATA DO CADASTRO</th>
+                    <th>ID. CAD.</th>
+                    <th>AÇÃO</th>                    
                 </tr>
-            </thead>
-            <!-- produto aqui -->
+            </thead>            
             <tbody id="produtos">
                 <tr>
                     <th></th>
@@ -117,7 +103,9 @@
                 </tr>
             </tbody>
         </table>
+        
     </div>
+    
 </body>
 
 </html>

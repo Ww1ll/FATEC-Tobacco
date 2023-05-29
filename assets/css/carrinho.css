@@ -13,6 +13,30 @@ main h2{
     text-align: left;
 }
 
+.valores{
+    display: flex;
+    margin-right: 10px;        
+}
+
+.addProd{
+    background-color: #2A553E;
+    border: none;    
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 20px;
+}
+
+.delProd{    
+    background-color: #df0a0a;
+    border: none;
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 20px;
+}
+
+
 main a{
     color: #383838;
 }

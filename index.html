@@ -30,6 +30,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/src/getCart.js"></script>
     <script>
         function userLogged() {
             $.ajax({
@@ -37,9 +38,15 @@
                 url: "quem.php",
                 success: function(resposta){
                     if(!resposta){
-                        $("#user").html("Faça Login!");
+                        $("#user").html("Faça Login ou <a href='cadastro.html'>cadastre-se.</a>");
+                        $('#cartVerify').html("");
                     }else{
                         $("#user").html("Bem vindo "+resposta);
+                        $('#user').append(`
+                        <div>
+                            <a href="" onclick="sair(event)">Sair</a>
+                        </div>
+                        `);
                     }
                 }
             })
@@ -60,11 +67,13 @@
                     $('header').removeClass('active')
                 }
             })
-        })
+        }) 
     </script>
+    <script src="assets/src/getCart.js"></script>
+    <script src="assets/src/jsHome.js"></script>
 </head>
 
-<body onload="userLogged()">
+<body onload="userLogged(), getCart('prod_qtd'), getProd()">
     <header>
         <div class="container">
             <div class="toggle-btn" onclick="dropdownFunc();">
@@ -84,10 +93,19 @@
                 </ul>
                 <ul class="icons-nav">
                     <div class="user" id="user">
-                        Bem vindo ...
+                        <div>
+                            Bem vindo.
+                        </div>                        
                     </div>
-                    <a href="login.html"><li><ion-icon name="person-outline" size="large"></ion-icon></li></a>
-                    <a href="carrinho.html"><li><ion-icon name="cart-outline" size="large"></ion-icon></li></a>
+                    <div id="loginVerify">                        
+                        <a href="login.html"><li><ion-icon name="person-outline" size="large"></ion-icon></li></a>
+                    </div>
+                    <div class="cart-container" id="cartVerify">
+                        <div class="cart-item">
+                            <a href="carrinho.html"><ion-icon name="cart-outline" size="large"></ion-icon></a>
+                        </div>
+                        <div class="" id="prod_qtd"></div>
+                    </div>
                 </ul>
             </nav>
 
@@ -131,70 +149,9 @@
         </marquee>
 
     </div> -->
-    <main class="products">
-        <card-product 
-        image="assets/imagens/products/behike/001cohiba(4).png"
-        photo="assets/imagens/products/behike/behike03.png"
-        title="Conjunto behike" 
-        price="R$300" 
-        ></card-product>
-
-        <card-product
-        image="assets/imagens/products/piramides/001978(4).png"
-        photo="assets/imagens/products/piramides/charuto_cohiba_piramides_02.png"
-        title="Conjunto behike" 
-        price="R$4860"
-        ></card-product>
-
-        <card-product
-        image="assets/imagens/products/sigloI/00e5556651 (4).png"
-        photo="assets/imagens/products/sigloI/siglo02.png"
-        title="Conjunto behike" 
-        price="R$4860"
-        ></card-product>
-
-        <a href="assets/produtos/produto.html"><card-product
-        image="assets/imagens/products/RapeXingu/001(2).png"
-        photo="assets/imagens/products/RapeXingu/003.png"
-        title="Rapé Xingu" 
-        price="R$50"
-        ></card-product></a>        
-
+    <main class="products" id="products_top">
     </main>
-    <main class="products">
-        <div class="card">
-            <div class="image" id="image2">
-                <img src="assets/imagens/products/narguile-mini-completo/003.png">
-            </div>
-            <div class="info">
-                <h3>cohiba</h3>
-                <div class="sub-info">
-                    <div class="price">$2000</div>
-                </div>
-                <div>
-                    <button class="btn-shop">
-                    SHOP    
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image" id="image2">
-                <img src="assets/imagens/products/raw/raw.png">
-            </div>
-            <div class="info">
-                <h3>cohiba muito muito foda</h3>
-                <div class="sub-info">
-                    <div class="price">$2000</div>
-                </div>
-                <div>
-                    <button class="btn-shop">
-                    SHOP    
-                    </button>
-                </div>
-            </div>
-        </div>
-
+    <main class="products" id="products_mid">
     </main>
     <main class="products">
         <card-product></card-product>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +24,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"
         integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="assets/src/jsCart.js"></script>
+
     <title>Carrinho de compras</title>
 </head>
-<body>
+
+<body onload="userLogged(), getCart('prod_qtd'), getProd()">
     <script>
         $(document).ready(function () {
             $(window).bind('scroll', function () {
@@ -47,7 +52,7 @@
                 <span></span>
             </div>
             <div class="logo">
-               <a href="index.html"><img src="assets/imagens/TobaccoRebrand.png"></a> 
+                <a href="index.html"><img src="assets/imagens/TobaccoRebrand.png"></a>
             </div>
             <nav class="nav" id="nav">
                 <ul class="nav-links">
@@ -57,14 +62,22 @@
                     <li><a href="#sobre">SOBRE</a></li> -->
                 </ul>
                 <ul class="icons-nav">
+                    <div class="user" id="user">
+                        Bem vindo.
+                    </div>
                     <li><ion-icon name="person-outline" size="large"></ion-icon></li>
-                    <li><ion-icon name="cart-outline" size="large"></ion-icon></li>
+                    <div class="cart-container">
+                        <div class="cart-item">
+                            <a href="carrinho.html"><ion-icon name="cart-outline" size="large"></ion-icon></a>
+                        </div>
+                        <div class="" id="prod_qtd"></div>
+                    </div>
                 </ul>
             </nav>
 
         </div>
     </header>
-    
+
     <main class="carrinho-container">
         <h2>Carrinho de compras</h2>
         <table id="tabela-carrinho">
@@ -73,11 +86,12 @@
                     <th colspan="2"> Itens para comprar</th>
                     <th colspan="2" class="coluna-pequena">Preço</th>
                     <th class="coluna-pequena">Quantidade</th>
+                    <th class="coluna-pequena">Total Individual</th>
                 </tr>
             </thead>
             <!-- produto aqui -->
-            <tbody>
-                    <tr id="item01">
+            <tbody id="corpo">
+                <!-- <tr id="item01">
                         <td class="coluna-capa">
                             <img src="assets/imagens/products/RapeXingu/001(2).png" width="200px" height="200px" class="capa">
                         </td>
@@ -97,18 +111,21 @@
                         <td>
                             <input type="number" value="1" min="0" max="5">
                         </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3" class="texto-total">Total da compra</td>
-                        <td colspan="2"><span class="total">R$ 880.00</span></td>
-                        <!-- <td>&nbsp;</td> -->
-                    </tr>
-                </tfoot>
-            </table>
-            <div class="buttons">
-            <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br>
+                    </tr> -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td colspan="2" class="texto-total">Total da compra</td>
+                    <td colspan="3"><span class="total" id="totalGeralCompra">R$ 880.00</span></td>
+                    <!-- <td>&nbsp;</td> -->
+                </tr>
+            </tfoot>
+        </table>
+        <div class="buttons">
+            <button id="btnMakeOrder" name="nomeBtn" onclick="makeOrder()">Realizar Pedido</button>
+            <!-- <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br> -->
+            <button name="btnLimpaCarrinho" onclick="cleanCart()">Esvaziar Carrinho</button>
         </div>
     </main>
     <footer>
@@ -116,7 +133,7 @@
             <img src="assets/imagens/TOBACCO.png" alt="">
         </div>
     </footer>
-    
+
     <script src="assets/src/components/CardProduct.js"></script>
     <script src="assets/src/dropdownFunc.js"></script>
     <!-- Materialize -->
@@ -127,4 +144,5 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+tr:hover{
+    background-color: #d2dadd;
+}
+
 .linha{
     display: grid;
     width: 70vh;    
@@ -52,22 +56,10 @@ img:hover{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    
-    /* display: flex;
-    margin: 0 auto;
-    justify-content: space-between; */
 }
 
-.header{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    
-    /* display: flex;
-    margin: 0 auto;
-    justify-content: space-between; */
+thead{
+    background-color: #f6f6f6;
 }
 
 .btn{
@@ -85,4 +77,27 @@ img:hover{
 
 .sair{
     background-color: #e61b1b;
+}
+
+.btnDel{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    border: 0 none;
+    cursor: pointer;
+    background-color: #ec5555;
+}
+
+.btnEdit{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    border: 0 none;
+    cursor: pointer;
+    background-color: #907ded;
+}
+
+
+table{
+    width: 100%;    
 }

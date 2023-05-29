@@ -10,8 +10,39 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>    
     
     <title>Tobacco | Login</title>
+
+    <script>
+      function userLogged() {
+          $.ajax({
+              type: "GET",
+              url: "quem.php",
+              success: function(resposta){
+                  if(!resposta){
+                      $("#user").html("Faça Login!");                      
+                  }else{
+                      $("#user").html("Bem vindo "+resposta);
+                  }
+              }
+          })
+      }
+
+      function login() {
+        $.ajax({
+              type: "GET",
+              url: "quem.php",
+              success: function(resposta){
+                if (!resposta) {
+                  
+                }else{
+                  alert("USUÁRIO LOGADO!");
+                  window.location = "produtos.html";
+                }      
+              }
+          })
+      }
+  </script>
 </head>
-<body>    
+<body onload="login()">    
     <form action="login.php" class="form" method="post" name="frmLogin" id="frmLogin" autocomplete="off">
     <a href="index.html"><img src="assets/imagens/TobaccoRebrand.png" class="logo-form"></a>
         <center><div class="title">Login</div></center>

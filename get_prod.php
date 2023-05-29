@@ -1,7 +1,9 @@
 <?php
 include 'conexao.php';
 
-$sql = mysql_query("select * from cad_prod order by id_prod");
+session_start();
+
+$sql = mysql_query("select * from cad_prod order by cod_prod");
 
 $array = array();
 
@@ -10,5 +12,6 @@ while ($row = mysql_fetch_assoc($sql)) {
 }
 
 echo json_encode($array);
+
 
 ?>

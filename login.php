@@ -26,6 +26,8 @@ $array = array();
 $sql = mysql_query("select * from cad_user where email = '$usuario' and senha = '$senha'");
 $sql_id = mysql_query("select id from cad_user where email = '$usuario' and senha = '$senha'");
 
+
+
 if (mysql_num_rows($sql) == 1){
     $sql = mysql_query("select id, nome, sobrenome from cad_user where email = '$usuario'");
     $linha = mysql_fetch_assoc($sql);      
@@ -38,7 +40,7 @@ if (mysql_num_rows($sql) == 1){
     
     $_SESSION['usuario_nome'] = $nome;
     $_SESSION['usuario_sobrenome'] = $sobrenome;
-    $_SESSION['user_id'] = $user_id;
+    $_SESSION['user_id'] = $user_id;    
     
     if ($nome == "admin" || $nome == "ADMIN") {
         echo "<script>
