@@ -118,6 +118,10 @@ ion-icon:hover{
 
 .nav-links li a:hover {color: #C9A175;} 
 
+#user{
+    color: #2A553E;
+}
+
 @media (max-width: 992px) {
     .toggle-btn{
         display: block;  
