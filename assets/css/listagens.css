@@ -160,3 +160,12 @@ textarea{
     border-radius: 20px;
     cursor: pointer;    
 }
+
+.conteudoClicavel{
+    background-color: #fff;
+    text-align: center;
+}
+
+.cabecalhoTabela{
+    text-align: center;
+}

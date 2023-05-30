@@ -10,9 +10,10 @@ function userLogged() {
                     <a href="" onclick="sair(event)">Sair</a>
                 </div>
                 `);
-                // $("#user").html("<div class='loger'>Faça Login ou </div><a href='cadastro.html'>cadastre-se.</a>");
-                // $('#cartVerify').html("");
+            }else{
+                $("#user").html("<div class='loger'>Faça Login ou </div><a href='cadastro.html'>cadastre-se.</a>");
             }            
+            $('#cartVerify').html("");
         }
     })
 }

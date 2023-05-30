@@ -21,6 +21,8 @@ $ped = mysql_query("SELECT * FROM cart_user where id_user = '$idCli'");
 
 $arrayPed = array();
 
+$totalOrder = 0;
+
 while ($row = mysql_fetch_assoc($ped)) {
     $arrayPed[] = $row;
 }
@@ -36,12 +38,16 @@ for ($i=0; $i < count($obj); $i++) {
     $precoProd = $obj[$i]->preco_prod;
     $qtdProd = $obj[$i]->qtd_prod;
     $totalProd = $qtdProd * $precoProd;
+    $totalOrder = $totalOrder+$totalProd;
 
     //echo $idUser." ".$codProd." ".$descProd." ".$precoProd." ".$qtdProd." ".$totalProd."<br>";
 
-    $sql = mysql_query("INSERT INTO tbpedido(ID_ped, cod_prod, qtd_prod, valor_prod) 
-                    VALUES ('$numPed', '$codProd', '$qtdProd', '$precoProd')");
+    $sql = mysql_query("INSERT INTO tbpedido(ID_ped, cod_cli, cod_prod, qtd_prod, valor_prod) 
+                    VALUES ('$numPed', '$idUser',  '$codProd', '$qtdProd', '$precoProd')");
 }
+
+$sql = mysql_query("INSERT INTO tb_order (num_ped, cod_cli, valor_ped)
+                   VALUES ('$numPed','$idUser','$totalOrder')");
 
 $sql = mysql_query("DELETE FROM cart_user WHERE id_user = $idCli");
 
