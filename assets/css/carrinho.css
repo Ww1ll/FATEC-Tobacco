@@ -19,7 +19,6 @@ main h2{
 }
 
 .addProd{
-    background-color: #2A553E;
     border: none;    
     padding: 4px;
     border-radius: 10px;
@@ -28,7 +27,6 @@ main h2{
 }
 
 .delProd{    
-    background-color: #df0a0a;
     border: none;
     padding: 4px;
     border-radius: 10px;
@@ -116,4 +114,42 @@ strong{
 
 .texto-total{
     text-align: right;
+}
+
+#btnMakeOrder{
+    background-color: #2A553E;
+    border: 2px solid #2A553E;
+    width: 10%;
+    border-radius: 5px;
+    color: #fff;
+    margin-right: 2%;
+}
+
+#btnMakeOrder:hover{
+    background-color: #f0f0f0;
+    border: 2px solid #2A553E;
+    color: #2A553E;
+    cursor: pointer;
+    
+}
+
+#btnLimpaCar{
+    color: #2A553E;
+    border: none;
+    border-radius: 5px;
+    width: 12%;
+}
+
+#btnLimpaCar:hover{
+    color: #2A553E;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+
+#btns-char{
+    margin-top: 1%;
+    display: flex;
+    justify-content:flex-end;
 }

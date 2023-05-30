@@ -12,12 +12,12 @@
 }
 
 .loger{
-    color: black;
+    color:#2A553E;
 }
 
 .cart-value{
     background-color: red;
-    height: fit-content;    
+    height: fit-content;   
     padding: 2px;    
     border-radius: 20px;
     color: #f0f0f0;
@@ -267,6 +267,7 @@ p {color: #333; font-weight: lighter; margin-left: 5%; margin-right: 5%;}
     border: 2px solid #2A553E;
     border-radius: 5px;
     background-color:  #2A553E;
+    margin-right: 1%;
 }
 
 .btn-enviar:hover{
@@ -283,9 +284,8 @@ p {color: #333; font-weight: lighter; margin-left: 5%; margin-right: 5%;}
     border-radius: 5px;
 }
 .btn-limpar:hover{
-    background-color:  #C9A175;
     border: 2px solid #2A553E;
-    color: #f0f0f0;
+    color: #2A553E;
     cursor: pointer;
 }
 
@@ -317,7 +317,7 @@ footer {
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: 20vh;
+    margin-top: 10vh;
 }
 
 .lista-footer {

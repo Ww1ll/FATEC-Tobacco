@@ -58,8 +58,8 @@
                 <ul class="nav-links">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="produtos.html">PRODUTOS</a></li>
-                    <!-- <li><a href="#contato">CONTATO</a></li>
-                    <li><a href="#sobre">SOBRE</a></li> -->
+                    <li><a href="#contato">CONTATO</a></li>
+                    <li><a href="#sobre">SOBRE</a></li>
                 </ul>
                 <ul class="icons-nav">
                     <div class="user" id="user">
@@ -122,15 +122,21 @@
                 </tr>
             </tfoot>
         </table>
-        <div class="buttons">
+        <div class="buttons" id="btns-char">
             <button id="btnMakeOrder" name="nomeBtn" onclick="makeOrder()">Realizar Pedido</button>
             <!-- <input type="submit" value="Realizar pedido" class="btn-pedido" onclick=""> <br><br> -->
-            <button name="btnLimpaCarrinho" onclick="cleanCart()">Esvaziar Carrinho</button>
+            <button id="btnLimpaCar" name="btnLimpaCarrinho" onclick="cleanCart()">Esvaziar Carrinho</button>
         </div>
     </main>
+    <a href="#" id="link-topo">&#9650;</a>
     <footer>
         <div class="footer">
             <img src="assets/imagens/TOBACCO.png" alt="">
+            <ul class="lista-footer">
+                <a href=""><li>Termos</li></a>
+                <a href=""><li>Sociais</li></a>
+                <a href=""><li>Contato</li></a>
+            </ul>
         </div>
     </footer>
 

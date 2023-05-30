@@ -1,7 +1,9 @@
 * {
     padding: 0;    
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Roboto, sans-serif;
     font-weight: bold;
+    background-color: #f0f0f0;
+    color: #101f17;
 }
 
 .cad-prod{
@@ -37,6 +39,10 @@ img:hover{
     padding: 5px;
 }
 
+.linha input{
+    border: 1px solid #2A553E;
+}
+
 .botoes{
     padding-top: 10px;        
     width: fit-content;
@@ -56,6 +62,12 @@ img:hover{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 5%;
+}
+
+.header h2{
+    color: #2A553E;
 }
 
 thead{
@@ -72,12 +84,27 @@ thead{
 }
 
 .voltar{
-    background-color: #51d647;
+    background-color: #f0f0f0;
+}
+
+.voltar:hover{
+    border: 2px solid #2A553E;
+    background-color: #f0f0f0;
+    color: #2A553E;
 }
 
 .sair{
-    background-color: #e61b1b;
+    background-color: #2A553E;
+    border: 2px solid #2A553E;
+    color: #fff;
+    font-weight: 550;
 }
+.sair:hover{
+    background-color: #f0f0f0;
+    border: 2px solid #2A553E;
+    color: #2A553E;
+}
+
 
 .btnDel{
     width: 60px;
@@ -85,19 +112,64 @@ thead{
     border-radius: 10px;
     border: 0 none;
     cursor: pointer;
-    background-color: #ec5555;
+    background-color: #C9A175;
+    color: #f0f0f0;
+}
+
+.btnDel:hover{
+    border: 2px solid #C9A175;
+    color: #C9A175;
+    background-color: #f0f0f0;
+}
+
+#btnEnviar{
+    background-color: #2A553E;
+    border: 2px solid #2A553E;
+    color: #f0f0f0;
+    border-radius: 10px;
+}
+
+#btnEnviar:hover{
+    cursor: pointer;
+    color: #2A553E;
+    border: 2px solid #2A553E;
+    background-color: #f0f0f0;   
+}
+
+#btnLimpar{
+    cursor: pointer;
+    color: #2A553E;
+    background-color: #f0f0f0;
+    border: none;
+}
+
+#btnLimpar:hover{
+    border: 2px solid #2A553E;
+    border-radius: 10px;
+}
+
+.cad-prod label{
+    color: #101f17;
 }
 
 .btnEdit{
     width: 60px;
     height: 60px;
     border-radius: 10px;
-    border: 0 none;
+    border:2px solid #2A553E;
     cursor: pointer;
-    background-color: #907ded;
+    background-color: #f0f0f0;
+    color: #2A553E;
+}
+
+.btnEdit:hover{
+    background-color: #2A553E;
+    color: #fff;
+    border:2px solid #2A553E;
 }
 
 
 table{
-    width: 100%;    
+    width: 100%;  
+    margin-top: 5%;  
 }
