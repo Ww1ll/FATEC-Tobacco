@@ -289,6 +289,23 @@ p {color: #333; font-weight: lighter; margin-left: 5%; margin-right: 5%;}
     cursor: pointer;
 }
 
+#link-topo {
+    text-decoration: none;
+    color: #2A553E;
+    background-color: #C9A175;
+    padding: 10px;
+    position: fixed;
+    right: 60px;
+    bottom: 80px;
+    box-shadow: 3px 3px 10px #383838;
+    z-index: 4;
+}
+
+#link-topo:hover{
+    color: #f0f0f0;
+    background-color: #2A553E;
+}
+
 /*footer*/
 footer {
     bottom: 0;
@@ -299,9 +316,8 @@ footer {
 .footer {
     display: flex;
     align-items: center;
-    justify-content: center;
     position: relative;
-    margin-top: 25vh;
+    margin-top: 20vh;
 }
 
 .lista-footer {
@@ -316,6 +332,8 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 4;
+    right: 95%;
 }
 
 .lista-footer li {
@@ -324,6 +342,9 @@ footer {
     color: #2A553E; 
 }
 
+.lista-footer li:hover{
+    text-decoration: underline;
+}
 /* .footer{
     position: relative;
     display: inline-block;

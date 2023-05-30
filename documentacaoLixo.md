@@ -15,13 +15,13 @@
 * testar outra imagem como primeira
 * trocar nome da classe smok
 * modal box
-
-## Em andamento
-* fazer form de contato x
 * preencher footer
+* numero no carrinho de compras
 * implementar página de carrinho !important
 * arrumar página de produto individualmente
 
+## Em andamento
+* fazer form de contato x
+
 ## Não feito
 * arrumar responsividade
-* numero no carrinho de compras
