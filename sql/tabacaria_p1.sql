@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 29-Maio-2023 às 17:11
+-- Data de Criação: 30-Maio-2023 às 15:25
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -98,6 +98,7 @@ CREATE TABLE IF NOT EXISTS `cart_user` (
 
 CREATE TABLE IF NOT EXISTS `tbpedido` (
   `ID_ped` varchar(18) NOT NULL DEFAULT '0',
+  `cod_cli` int(20) NOT NULL,
   `data_ped` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `cod_prod` int(11) NOT NULL DEFAULT '0',
   `qtd_prod` int(11) NOT NULL,
@@ -110,10 +111,32 @@ CREATE TABLE IF NOT EXISTS `tbpedido` (
 -- Extraindo dados da tabela `tbpedido`
 --
 
-INSERT INTO `tbpedido` (`ID_ped`, `data_ped`, `cod_prod`, `qtd_prod`, `valor_prod`) VALUES
-('1020230529141028', '2023-05-29 17:10:28', 1, 1, '100.00'),
-('1020230529141028', '2023-05-29 17:10:29', 2, 1, '25.50'),
-('1020230529141028', '2023-05-29 17:10:29', 3, 1, '185.00');
+INSERT INTO `tbpedido` (`ID_ped`, `cod_cli`, `data_ped`, `cod_prod`, `qtd_prod`, `valor_prod`) VALUES
+('1020230530111315', 27, '2023-05-30 14:13:15', 1, 1, '100.00'),
+('1020230530111315', 27, '2023-05-30 14:13:15', 2, 1, '25.50'),
+('1020230530111315', 27, '2023-05-30 14:13:15', 3, 1, '185.00'),
+('1020230530111315', 27, '2023-05-30 14:13:15', 4, 1, '399.99');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_order`
+--
+
+CREATE TABLE IF NOT EXISTS `tb_order` (
+  `num_ped` varchar(30) NOT NULL,
+  `cod_cli` int(20) NOT NULL,
+  `data_ped` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `valor_ped` double(10,2) NOT NULL,
+  PRIMARY KEY (`num_ped`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_order`
+--
+
+INSERT INTO `tb_order` (`num_ped`, `cod_cli`, `data_ped`, `valor_ped`) VALUES
+('1020230530111315', 27, '2023-05-30 14:13:16', 710.49);
 
 -- --------------------------------------------------------
 
