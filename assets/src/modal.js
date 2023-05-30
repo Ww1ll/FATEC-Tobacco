@@ -5,7 +5,12 @@ const fecharModal = document.getElementById('maisDezoito')
 const redirecionarModal = document.getElementById('menorDezoito')
 
 window.addEventListener('load', () => {
-    modalTobacco.showModal()
+    const modalShown = localStorage.getItem('modalShown')
+
+    if(!modalShown){
+        modalTobacco.showModal()
+        localStorage.setItem('modalShown', 'true')
+    }
 })
 
 fecharModal.addEventListener('click', () => {

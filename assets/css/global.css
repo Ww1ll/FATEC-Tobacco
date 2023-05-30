@@ -262,16 +262,16 @@ p {color: #333; font-weight: lighter; margin-left: 5%; margin-right: 5%;}
 }
 
 .btn-enviar{
-    color: #333;
+    color: #f0f0f0;
     width: 60%;
-    border: 2px solid #333;
+    border: 2px solid #2A553E;
     border-radius: 5px;
     background-color:  #2A553E;
 }
 
 .btn-enviar:hover{
-    background-color:  #2A553E;
-    border: 2px solid #2A553E;
+    background-color:  #C9A175;
+    border: 2px solid #C9A175;
     color: #f0f0f0;
     cursor: pointer;
 }
