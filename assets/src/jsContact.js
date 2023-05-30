@@ -42,8 +42,37 @@ function getMessages() {
     });
 }
 
-function getDadosPed(idPed, idCli){
-    alert(idPed + idCli);
+function getDadosPed(id){
+    $.ajax({
+        type: "POST",
+        url: `getPed.php`,
+        data: {
+            idPed: `${id}`,
+        },
+        success: function(resposta){
+            const pedido = JSON.parse(resposta);
+
+            console.log(pedido);
+
+            var soma = 0;
+            
+            for (let i = 0; i < pedido.length; i++) {                
+                soma += ((pedido[i].qtd_prod)*(pedido[i].valor_prod));
+                
+                $("#resumo").append(`
+                <tr>
+                    <td>
+                        Teste        
+                    </td>
+                    <td>
+                        Teste        
+                    </td>                    
+                </tr>              
+                `);
+            }
+            
+        }
+    });
 }
 
 function getOrder() {
@@ -53,11 +82,11 @@ function getOrder() {
             const resp = JSON.parse(resposta);
             console.log(resp);
             if (resp.length == 0) {
-                $('#tbody').html("Sem mensagens");
+                $('#tbody').html("SEM PEDIDOS.");
             }else{
                 for (let index = 0; index < resp.length; index++) {
                     $('#tbody').append(`                
-                        <tr class="conteudoClicavel" id="${resp[index].num_ped}" name="${resp[index].cod_cli}" onclick="getDadosPed(this.id, 'teste')">
+                        <tr class="conteudoClicavel" id="${resp[index].num_ped}" onclick="getDadosPed(this.id)">
                             <td>
                                 ${resp[index].num_ped}
                             </td>
