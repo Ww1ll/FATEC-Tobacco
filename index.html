@@ -37,16 +37,13 @@
                 type: "GET",
                 url: "quem.php",
                 success: function(resposta){
-                    if(!resposta){
-                        $("#user").html("Faça Login ou <a href='cadastro.html'>cadastre-se.</a>");
-                        $('#cartVerify').html("");
-                    }else{
+                    if(resposta){
                         $("#user").html("Bem vindo "+resposta);
                         $('#user').append(`
                         <div>
                             <a href="" onclick="sair(event)">Sair</a>
                         </div>
-                        `);
+                        `);                       
                     }
                 }
             })
@@ -94,7 +91,7 @@
                 <ul class="icons-nav">
                     <div class="user" id="user">
                         <div>
-                            Bem vindo.
+                            <div class="loger">Faça login ou</div><a href='cadastro.html'>cadastre-se.</a>
                         </div>                        
                     </div>
                     <div id="loginVerify">                        
@@ -153,11 +150,11 @@
     </main>
     <main class="products" id="products_mid">
     </main>
-    <main class="products">
+    <main class="products" id="products_down">
+        <!-- <card-product></card-product>
         <card-product></card-product>
         <card-product></card-product>
-        <card-product></card-product>
-        <card-product></card-product>
+        <card-product></card-product> -->
     </main>
     <!-- <div class="div-marqee">
         <marquee behavior="" direction="">

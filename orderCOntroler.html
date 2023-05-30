@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/listagens.css">
+    <!-- <link rel="stylesheet" href="assets/css/contact.css"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>  
+    <script src="assets/src/jsContact.js"></script>  
+
+    <title>Relação de Pedidos</title>
+</head>
+
+<body onload="getUser(), getOrder()">
+    <div class="header">
+        <div class="item">
+            <h2>Pedidos Efetuados</h2>
+        </div>
+        <div class="item" id="user_log"></div>
+        <div class="item" id="botoes">
+            <a href="painel.html"><input type="button" value="Voltar" class="btn voltar" on></a>
+            <input type="button" value="SAIR" class="btn sair" onclick="sair()">
+        </div>
+    </div>
+    <div class="corpo">
+        <div class="lista" id="lista">
+            <table>
+                <thead>
+                    <tr class="cabecalhoTabela">
+                        <td>
+                            Número do Pedido
+                        </td>
+                        <td>
+                            Cód. Cliente
+                        </td>
+                        <td>
+                            Data do Pedido                     
+                        </td>
+                        <td>
+                            Valor do Pedido
+                        </td>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+        <div class="conteudo" id="mensagem">
+            <textarea name="txtMsg" id="txtMsg" cols="txtMsg" rows="" placeholder="Selecione uma mensagem" readonly></textarea>
+        </div>
+    </div>
+
+</body>
+
+</html>

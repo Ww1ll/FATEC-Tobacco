@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 28-Maio-2023 às 20:47
+-- Data de Criação: 29-Maio-2023 às 17:11
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -44,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `cad_prod` (
 --
 
 INSERT INTO `cad_prod` (`cod_prod`, `img_prod`, `capa_prod`, `desc_prod`, `preco_prod`, `id_resp`, `data_cad`) VALUES
-(1, 'assets/imagens/products/RapeXingu/001.webp', 'assets/imagens/products/RapeXingu/002.webp', 'Rape Xingu2', 100.00, 27, '2023-05-25 13:14:20'),
+(1, 'assets/imagens/products/RapeXingu/001.webp', 'assets/imagens/products/RapeXingu/002.webp', 'Rape Xingu', 100.00, 25, '2023-05-25 13:14:20'),
 (2, 'assets/imagens/products/SedaZomoBrown/001.webp', 'assets/imagens/products/SedaZomoBrown/002.webp', 'Seda ZOMO Brown', 25.50, 25, '2023-05-25 14:23:23'),
 (3, 'assets/imagens/products/kingTobacco/001.webp', 'assets/imagens/products/kingTobacco/002.webp', 'Combo King Tobacco', 185.00, 25, '2023-05-25 14:43:44'),
-(4, 'assets/imagens/products/seda-vidro/001.webp', 'assets/imagens/products/seda-vidro/002.webp', 'Seda Vidro SESSAOZADA', 68.95, 27, '2023-05-28 17:42:57');
+(4, 'assets/imagens/products/narguile-mini-completo/001.webp', 'assets/imagens/products/narguile-mini-completo/002.webp', 'Narguile Mini Completo', 399.99, 25, '2023-05-26 11:54:30');
 
 -- --------------------------------------------------------
 
@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `cad_user` (
 
 INSERT INTO `cad_user` (`id`, `nome`, `sobrenome`, `cpf`, `senha`, `nascto`, `telefone`, `email`) VALUES
 (25, 'admin', 'admin', '123456', 'admin', '1010-10-10', '12', 'admin'),
+(27, 'FERNANDO', 'BONDE LEONELLI', '351.865.478-08', '123456', '1987-11-23', '(11) 98910-2234', 'fernandobondeleonelli@gmail.com'),
 (28, 'ALICE', 'OLIVEIRA', '987.654.321-00', '123456', '2010-10-10', '(11) 11111-1111', 'aliceoliveira@gmail.com');
 
 -- --------------------------------------------------------
@@ -89,17 +90,30 @@ CREATE TABLE IF NOT EXISTS `cart_user` (
   `qtd_prod` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Extraindo dados da tabela `cart_user`
+-- Estrutura da tabela `tbpedido`
 --
 
-INSERT INTO `cart_user` (`id_user`, `cod_prod`, `desc_prod`, `preco_prod`, `qtd_prod`) VALUES
-(28, 4, 'Narguile Mini Completo', '399.99', 1),
-(28, 3, 'Combo King Tobacco', '185.00', 1),
-(27, 1, 'Rape Xingu', '100.00', 1),
-(27, 2, 'Seda ZOMO Brown', '25.50', 1),
-(27, 3, 'Combo King Tobacco', '185.00', 1),
-(27, 4, 'Narguile Mini Completo', '399.99', 1);
+CREATE TABLE IF NOT EXISTS `tbpedido` (
+  `ID_ped` varchar(18) NOT NULL DEFAULT '0',
+  `data_ped` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `cod_prod` int(11) NOT NULL DEFAULT '0',
+  `qtd_prod` int(11) NOT NULL,
+  `valor_prod` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`ID_ped`,`cod_prod`),
+  KEY `cod_prod` (`cod_prod`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tbpedido`
+--
+
+INSERT INTO `tbpedido` (`ID_ped`, `data_ped`, `cod_prod`, `qtd_prod`, `valor_prod`) VALUES
+('1020230529141028', '2023-05-29 17:10:28', 1, 1, '100.00'),
+('1020230529141028', '2023-05-29 17:10:29', 2, 1, '25.50'),
+('1020230529141028', '2023-05-29 17:10:29', 3, 1, '185.00');
 
 -- --------------------------------------------------------
 
@@ -115,14 +129,17 @@ CREATE TABLE IF NOT EXISTS `tb_sugest` (
   `lido` varchar(1) NOT NULL,
   `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Extraindo dados da tabela `tb_sugest`
+-- Constraints for dumped tables
 --
 
-INSERT INTO `tb_sugest` (`id`, `nome`, `email`, `assunto`, `lido`, `data`) VALUES
-(4, 'Fernando Bonde Leonelli', 'fernandobondeleonelli@gmail.com', 'Teste de mensagen de contato', 'n', '2023-05-28 19:48:48');
+--
+-- Limitadores para a tabela `tbpedido`
+--
+ALTER TABLE `tbpedido`
+  ADD CONSTRAINT `tbpedido_ibfk_1` FOREIGN KEY (`cod_prod`) REFERENCES `cad_prod` (`cod_prod`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
