@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 30-Maio-2023 às 15:25
+-- Data de Criação: 31-Maio-2023 às 13:52
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -112,10 +112,13 @@ CREATE TABLE IF NOT EXISTS `tbpedido` (
 --
 
 INSERT INTO `tbpedido` (`ID_ped`, `cod_cli`, `data_ped`, `cod_prod`, `qtd_prod`, `valor_prod`) VALUES
-('1020230530111315', 27, '2023-05-30 14:13:15', 1, 1, '100.00'),
-('1020230530111315', 27, '2023-05-30 14:13:15', 2, 1, '25.50'),
-('1020230530111315', 27, '2023-05-30 14:13:15', 3, 1, '185.00'),
-('1020230530111315', 27, '2023-05-30 14:13:15', 4, 1, '399.99');
+('1020230531102052', 27, '2023-05-31 13:20:52', 1, 2, '100.00'),
+('1020230531102052', 27, '2023-05-31 13:20:52', 2, 1, '25.50'),
+('1020230531102052', 27, '2023-05-31 13:20:52', 3, 2, '185.00'),
+('1020230531104648', 28, '2023-05-31 13:46:48', 1, 2, '100.00'),
+('1020230531104648', 28, '2023-05-31 13:46:48', 2, 1, '25.50'),
+('1020230531104648', 28, '2023-05-31 13:46:48', 3, 1, '185.00'),
+('1020230531104648', 28, '2023-05-31 13:46:48', 4, 1, '399.99');
 
 -- --------------------------------------------------------
 
@@ -136,7 +139,8 @@ CREATE TABLE IF NOT EXISTS `tb_order` (
 --
 
 INSERT INTO `tb_order` (`num_ped`, `cod_cli`, `data_ped`, `valor_ped`) VALUES
-('1020230530111315', 27, '2023-05-30 14:13:16', 710.49);
+('1020230531102052', 27, '2023-05-31 13:20:52', 595.50),
+('1020230531104648', 28, '2023-05-31 13:46:48', 810.49);
 
 -- --------------------------------------------------------
 
@@ -152,7 +156,14 @@ CREATE TABLE IF NOT EXISTS `tb_sugest` (
   `lido` varchar(1) NOT NULL,
   `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `tb_sugest`
+--
+
+INSERT INTO `tb_sugest` (`id`, `nome`, `email`, `assunto`, `lido`, `data`) VALUES
+(1, 'teste', 'teste', 'teste', 'n', '2023-05-31 11:17:14');
 
 --
 -- Constraints for dumped tables
