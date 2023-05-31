@@ -10,6 +10,14 @@ function userLogged() {
                     <a href="" onclick="sair(event)">Sair</a>
                 </div>
                 `);
+                $("#user").append(`
+                    <div class="cart-container" id="cartVerify">
+                        <div class="cart-item">
+                            <a href="carrinho.html"><ion-icon name="cart-outline" size="large"></ion-icon></a>
+                        </div>
+                        <div class="" id="prod_qtd"></div>
+                    </div>
+                `);
             }else{
                 $("#user").html("<div class='loger'>Faça Login ou </div><a href='cadastro.html'>cadastre-se.</a>");
             }            
