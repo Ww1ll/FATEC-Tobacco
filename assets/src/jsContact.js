@@ -51,9 +51,12 @@ function getDadosPed(id) {
         },
         success: function (resposta) {
             const pedido = JSON.parse(resposta);
+            
             console.log(pedido);
+            
             var soma = 0;
 
+            $("#orderContent").html(``);
             $("#orderContent").html(`
                 <div class="headerOrder" id="headerOrder">
                     <center>Resumo de Pedido</center>
