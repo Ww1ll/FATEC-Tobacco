@@ -59,17 +59,23 @@ function getDadosPed(id) {
                     <center>Resumo de Pedido</center>
                     <table id="dadosCliente">
                         <tr>
+                        <td>Número do Pedido:</td>
+                        <td>${id}</td>
+                        </tr>
+                        <tr>
                             <td>
-                            Cód. do cliente:
-                            </td>
+                                Cód. do cliente:
+                            </td>                        
+                            <td id="codCli"></td>
+                        </tr>
+                        <tr>
                             <td>
                                 Nome do Cliente:
                             </td>
+                            <td id="nomeCli"></td>
                         </tr>
                         <hr>
                         <tr>
-                            <td id="codCli"></td>
-                            <td id="nomeCli"></td>
                         </tr>
                     </table>
                     <hr>
